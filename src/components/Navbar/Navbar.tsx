@@ -1,20 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 // Components
 import Button from "../Button/Button";
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState<Boolean>(false);
+  const [navItems, setNavItems] = useState<Boolean>(false);
+  const [renderCount, setRenderCount] = useState<number>(0);
+
+  useEffect(() => {
+    setRenderCount((p: number) => ++p);
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (renderCount > 2) {
+      menuOpen ? setNavItems(false) : setNavItems(true);
+    }
+  }, [renderCount]);
+
   return (
     <StyledNavbar>
+      <div className={"menubar-modal" + (menuOpen ? " open" : " close")}></div>
+
       <div className="container">
-        <div className="nav">
+        <div
+          className={"nav" + (menuOpen ? " open" : navItems ? " close" : "")}
+        >
           <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#who">About</a></li>
-            <li><a href="#works">Works</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li>
+              <a href="#hero" onClick={() => setMenuOpen((p) => !p)}>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#who" onClick={() => setMenuOpen((p) => !p)}>
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#works" onClick={() => setMenuOpen((p) => !p)}>
+                Works
+              </a>
+            </li>
+            <li>
+              <a href="#contact" onClick={() => setMenuOpen((p) => !p)}>
+                Contact
+              </a>
+            </li>
           </ul>
+        </div>
+        <div className="mobile-menu" onClick={() => setMenuOpen((p) => !p)}>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
         <div className="action">
           <Button content="Get work" />
@@ -36,6 +75,7 @@ const StyledNavbar = styled.div`
   font-weight: 600;
 
   animation: fadeInNavbar 400ms ease-in-out;
+  z-index: 2;
 
   & > .container {
     display: flex;
@@ -73,6 +113,119 @@ const StyledNavbar = styled.div`
         }
       }
     }
+
+    .mobile-menu {
+      display: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    padding: 10px 0px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+
+    color: #fff;
+    font-weight: 600;
+
+    animation: fadeInNavbar 400ms ease-in-out;
+
+    & > .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+
+      .nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        margin: 0px;
+
+        width: 100%;
+        height: 100vh;
+
+        ul {
+          padding: 10px 16px;
+          height: 100vh;
+
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          font-size: 1.5rem;
+
+          li {
+            &:hover,
+            &:active {
+              padding: 0px 0px 10px;
+
+              border-bottom: 3px solid #fff;
+            }
+          }
+        }
+
+        display: none;
+
+        &.open {
+          display: block;
+
+          animation: animatedOpenMenu 1400ms ease-in-out;
+        }
+
+        &.close {
+          display: block;
+          animation: animatedCloseMenuItems 500ms ease-in-out forwards;
+        }
+      }
+
+      .mobile-menu {
+        cursor: pointer;
+        display: block;
+        position: relative;
+
+        width: 35px;
+        height: 24px;
+
+        span {
+          position: absolute;
+          width: 100%;
+          border: 2px solid rgba(226, 226, 226, 0.555);
+
+          &:nth-of-type(2) {
+            top: 10px;
+          }
+
+          &:nth-of-type(3) {
+            top: 20px;
+          }
+        }
+      }
+    }
+
+    .menubar-modal {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      &.open {
+        width: 100%;
+        height: 100vh;
+        background: #141e30;
+        background: -webkit-linear-gradient(to right, #243b55, #141e30);
+        background: linear-gradient(to right, #243b55, #141e30);
+
+        animation: animatedOpenMenu 1000ms ease-in-out;
+      }
+
+      &.close {
+        animation: animatedCloseMenu 1000ms ease-in-out forwards;
+      }
+    }
   }
 
   /* ANIMATIONS */
@@ -85,6 +238,44 @@ const StyledNavbar = styled.div`
     to {
       margin-top: 0px;
       opacity: 1;
+    }
+  }
+
+  @keyframes animatedOpenMenu {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes animatedCloseMenu {
+    from {
+      width: 100vw;
+      height: 100vh;
+      background: #141e30;
+      background: -webkit-linear-gradient(to right, #243b55, #141e30);
+      background: linear-gradient(to right, #243b55, #141e30);
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+      display: none;
+    }
+  }
+
+  @keyframes animatedCloseMenuItems {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      transform: scale(10);
+      opacity: 0;
+      display: none;
     }
   }
 `;

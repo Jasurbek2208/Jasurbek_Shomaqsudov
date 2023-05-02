@@ -1,9 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-// 3D Model
-import ModelApp from "../model/Model";
-
 export default function Hero() {
   return (
     <StyledHero id="hero">
@@ -19,9 +16,6 @@ export default function Hero() {
               src="illustrators/developer.webp"
               alt="frontend developer illustrator"
             />
-            {/* <div className="model">
-              <ModelApp />
-            </div> */}
           </div>
         </main>
       </div>
@@ -33,7 +27,7 @@ const StyledHero = styled.section`
   scroll-snap-align: end;
 
   .container > main {
-    padding-top: 250px;
+    padding-top: 0px;
 
     display: flex;
     align-items: center;
@@ -68,9 +62,38 @@ const StyledHero = styled.section`
       position: relative;
       animation: fadeIn 1s ease-in-out;
 
-      .model {
+      img {
+        width: 100%;
         position: absolute;
         animation: illustratorAnimation 8s infinite;
+        z-index: -100;
+      }
+    }
+
+    @media (max-width: 940px) {
+      padding-top: 220px;
+
+      .description {
+        h1 {
+          font-size: 2.6rem;
+        }
+
+        h3 {
+          font-size: 1.6rem;
+        }
+
+        p {
+          font-size: 0.8rem;
+        }
+      }
+
+      .image {
+        width: 300px;
+        height: 300px;
+
+        img {
+          animation: illustratorAnimation 10s infinite;
+        }
       }
     }
   }
