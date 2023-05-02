@@ -15,13 +15,13 @@ export default function Hero() {
             <p>Check out the site to learn more about me.</p>
           </div>
           <div className="image">
-            {/* <img
+            <img
               src="illustrators/developer.webp"
               alt="frontend developer illustrator"
-            /> */}
-            <div className="model">
+            />
+            {/* <div className="model">
               <ModelApp />
-            </div>
+            </div> */}
           </div>
         </main>
       </div>
