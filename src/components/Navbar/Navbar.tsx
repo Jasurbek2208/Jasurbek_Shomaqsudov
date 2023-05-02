@@ -74,6 +74,10 @@ const StyledNavbar = styled.div`
   color: #fff;
   font-weight: 600;
 
+  background: #141e30;
+  background: -webkit-linear-gradient(to right, #243b55, #141e30);
+  background: linear-gradient(to right, #243b55, #141e30);
+
   animation: fadeInNavbar 400ms ease-in-out;
   z-index: 2;
 
@@ -268,12 +272,20 @@ const StyledNavbar = styled.div`
   }
 
   @keyframes animatedCloseMenuItems {
-    from {
+    0% {
       opacity: 1;
     }
 
-    to {
+    99% {
+      left: 0px;
       transform: scale(10);
+      opacity: 0;
+      display: none;
+    }
+
+    100% {
+      left: -1000px;
+      transform: scale(0);
       opacity: 0;
       display: none;
     }
