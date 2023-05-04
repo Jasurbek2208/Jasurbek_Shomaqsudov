@@ -5,12 +5,25 @@ import styled from "styled-components";
 interface IButton {
   content: String;
   type?: "button" | "submit";
+  disable?: boolean | undefined;
+  animatedBtn: Boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
-export default function Button({ content, type = "button", onClick }: IButton) {
+export default function Button({
+  content,
+  type = "button",
+  disable,
+  animatedBtn,
+  onClick,
+}: IButton) {
   return (
-    <StyledButton type={type} onClick={onClick}>
+    <StyledButton
+      className={"button" + (animatedBtn ? " on-animate" : "")}
+      type={type}
+      disabled={disable || false}
+      onClick={onClick}
+    >
       {content}
     </StyledButton>
   );
@@ -18,7 +31,7 @@ export default function Button({ content, type = "button", onClick }: IButton) {
 
 const StyledButton = styled.button`
   cursor: pointer;
-  padding: 10px 14px;
+  padding: 17px 16px;
   position: relative;
   width: 100%;
 
@@ -26,41 +39,23 @@ const StyledButton = styled.button`
   font-weight: 600;
 
   border: none;
-  /* From https://css.glass */
   background: rgba(255, 255, 255, 0.06);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   transition: 400ms;
 
-  animation: buttonAnimate 10s infinite 2s;
+  &.on-animate {
+    padding: 14px 16px;
+    animation: buttonAnimate 10s infinite 2s;
+  }
 
   &:hover,
-  &:active {
+  &:focus {
     outline: none;
     color: #141e30;
     background-color: #fff;
   }
-
-  /* &:before {
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 60px;
-    height: 6.5px;
-    background: #141e30;
-  }
-
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 60px;
-    height: 6.5px;
-    background: #141e30;
-  } */
 
   /* ANIMATIONS */
   @keyframes buttonAnimate {

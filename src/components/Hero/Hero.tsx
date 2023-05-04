@@ -27,15 +27,16 @@ const StyledHero = styled.section`
   scroll-snap-align: end;
 
   .container > main {
-    padding-top: 0px;
+    height: 100%;
 
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
+
     gap: 40px;
     row-gap: 0px;
-
+    
     .description {
       color: #fff;
 
@@ -71,11 +72,11 @@ const StyledHero = styled.section`
     }
 
     @media (max-width: 940px) {
-      padding-top: 220px;
+      padding-top: 160px;
 
       .description {
         h1 {
-          font-size: 2.6rem;
+          font-size: 2.4rem;
         }
 
         h3 {

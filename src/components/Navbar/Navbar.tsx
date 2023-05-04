@@ -50,13 +50,17 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-        <div className="mobile-menu" onClick={() => setMenuOpen((p) => !p)}>
+        <div
+          className={"mobile-menu" + (menuOpen ? " On" : "")}
+          onClick={() => setMenuOpen((p) => !p)}
+        >
+          <span></span>
           <span></span>
           <span></span>
           <span></span>
         </div>
         <div className="action">
-          <Button content="Get work" />
+          <Button content="Get work" animatedBtn={true} />
         </div>
       </div>
     </StyledNavbar>
@@ -83,7 +87,6 @@ const StyledNavbar = styled.div`
 
   & > .container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
 
     .nav {
@@ -96,26 +99,31 @@ const StyledNavbar = styled.div`
         list-style: none;
 
         li {
-          padding: 0px 0px 10px;
           cursor: pointer;
 
-          border-bottom: 3px solid transparent;
-
-          transition: 600ms all;
-
-          &:hover,
-          &:active {
-            padding: 0px 0px 3px;
-
-            border-bottom: 3px solid #fff;
-          }
-
           a {
+            padding: 0px 0px 10px;
             text-decoration: none;
             color: inherit;
+
+            border-bottom: 3px solid transparent;
+
+            transition: 600ms all;
+
+            &:hover,
+            &:focus {
+              outline: none;
+              padding: 0px 0px 3px;
+
+              border-bottom: 3px solid #fff;
+            }
           }
         }
       }
+    }
+
+    .action {
+      width: 110px;
     }
 
     .mobile-menu {
@@ -163,11 +171,13 @@ const StyledNavbar = styled.div`
           font-size: 1.5rem;
 
           li {
-            &:hover,
-            &:active {
-              padding: 0px 0px 10px;
+            a {
+              &:hover,
+              &:focus {
+                padding: 0px 0px 10px;
 
-              border-bottom: 3px solid #fff;
+                border-bottom: 3px solid #fff;
+              }
             }
           }
         }
@@ -198,6 +208,11 @@ const StyledNavbar = styled.div`
           position: absolute;
           width: 100%;
           border: 2px solid rgba(226, 226, 226, 0.555);
+          transition: 0.6s;
+
+          &:nth-of-type(1) {
+            left: 0px;
+          }
 
           &:nth-of-type(2) {
             top: 10px;
@@ -205,6 +220,35 @@ const StyledNavbar = styled.div`
 
           &:nth-of-type(3) {
             top: 20px;
+            right: 0px;
+          }
+
+          &:nth-of-type(4) {
+            top: -200px;
+            left: -120px;
+
+            width: 35px;
+            transform: rotate(50deg);
+            transition: 0.3s ease-in;
+          }
+        }
+
+        &.On {
+          span:nth-of-type(1) {
+            left: -60px;
+          }
+
+          span:nth-of-type(2) {
+            transform: rotate(-50deg);
+          }
+
+          span:nth-of-type(3) {
+            right: -200vw;
+          }
+
+          span:nth-of-type(4) {
+            top: 10px;
+            left: 0px;
           }
         }
       }
