@@ -83,7 +83,7 @@ const StyledNavbar = styled.div`
   background: linear-gradient(to right, #243b55, #141e30);
 
   animation: fadeInNavbar 400ms ease-in-out;
-  z-index: 2;
+  z-index: 3;
 
   & > .container {
     display: flex;

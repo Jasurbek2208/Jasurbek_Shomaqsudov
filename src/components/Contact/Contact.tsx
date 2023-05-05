@@ -5,6 +5,7 @@ import toast from "../../../node_modules/react-hot-toast/dist/index";
 import styled from "styled-components";
 
 // Components
+import Map from "../Map/Map";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 
@@ -52,6 +53,8 @@ export default function Contact(): JSX.Element {
         ...p,
         name: [true, "You can enter a maximum of 55 characters."],
       }));
+
+      isNotValid = true;
     }
 
     // Checking phone
@@ -80,6 +83,8 @@ export default function Contact(): JSX.Element {
           "You wrote a very short message. The message must be at least 24 characters long.",
         ],
       }));
+
+      isNotValid = true;
     } else if (message.trim().length > 1200) {
       setError((p) => ({
         ...p,
@@ -88,6 +93,8 @@ export default function Contact(): JSX.Element {
           "You wrote a very long message. The message should be no more than 1200 characters long.",
         ],
       }));
+
+      isNotValid = true;
     }
 
     return isNotValid;
@@ -206,6 +213,11 @@ export default function Contact(): JSX.Element {
             />
           </div>
         </form>
+
+        {/* Map */}
+        <div className="map">
+          <Map />
+        </div>
       </div>
     </StyledContact>
   );
@@ -215,7 +227,14 @@ const StyledContact = styled.section`
   scroll-snap-align: center;
 
   .container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
     form {
+      width: 420px;
       padding-top: 130px;
       height: 100%;
 
@@ -224,6 +243,7 @@ const StyledContact = styled.section`
       justify-content: flex-start;
       flex-direction: column;
       row-gap: 40px;
+      z-index: 2;
 
       .input {
         position: relative;
@@ -243,12 +263,25 @@ const StyledContact = styled.section`
           color: red;
           font-size: 0.84rem;
           font-weight: 600;
+          text-shadow: 0px 0px 15px #000;
 
           &.long {
             bottom: -34px;
           }
         }
       }
+    }
+
+    .map {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      width: 100%;
+      height: 100%;
+
+      overflow: hidden;
+      z-index: 1;
     }
   }
 `;

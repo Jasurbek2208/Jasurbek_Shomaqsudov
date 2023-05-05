@@ -70,7 +70,7 @@ const StyledTextarea = styled.textarea`
   margin-top: 4px;
   max-width: 100% !important;
   min-width: 100%;
-  min-height: 60px;
+  min-height: 85px;
   max-height: 145px;
 
   outline: none;
