@@ -18,7 +18,7 @@ export default function Map() {
   return (
     <StyledMap>
       <ComposableMap>
-        <Geographies geography={/features.json}>
+        <Geographies geography="/features.json">
           {({ geographies }) =>
             geographies.map((geo) => {
               return (
