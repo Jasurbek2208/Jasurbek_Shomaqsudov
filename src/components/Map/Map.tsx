@@ -7,8 +7,7 @@ import {
   Geography,
   Marker,
   Annotation,
-} from "../../../node_modules/react-simple-maps/dist/index.es.js
-";
+} from "../../../node_modules/react-simple-maps/dist/index.es.js";
 
 // Style Import
 import styled from "styled-components";
