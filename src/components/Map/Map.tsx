@@ -12,13 +12,13 @@ import {
 // Style Import
 import styled from "styled-components";
 
-import features from "../../../public/features.json"; // Importing the GeoJSON data
+// import features from "../../../public/features.json";
 
 export default function Map() {
   return (
     <StyledMap>
       <ComposableMap>
-        <Geographies geography={features}>
+        <Geographies geography={/features.json}>
           {({ geographies }) =>
             geographies.map((geo) => {
               return (
