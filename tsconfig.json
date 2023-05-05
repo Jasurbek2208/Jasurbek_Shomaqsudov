@@ -1,22 +1,29 @@
 {
   "compilerOptions": {
-    "target": "es6", // specifies the target version of ECMAScript that the code should be compiled to
-    "module": "esnext", // specifies the module code generation (in this case, ES modules)
-    "jsx": "react", // specifies that we're using JSX syntax
-    "strict": true, // enables all strict type-checking options
-    "esModuleInterop": true, // allows interop between CommonJS and ES modules
-    "skipLibCheck": true, // skips type checking of all declaration files (*.d.ts)
-    "forceConsistentCasingInFileNames": true, // ensures that file names are cased consistently
-    "noImplicitReturns": true, // error if not all code paths in function return a value
-    "noUnusedLocals": true, // error if a local variable is never read
-    "noUnusedParameters": true, // error if a function parameter is never read
-    "allowJs": true, // allows the compiler to check and emit JavaScript files
-    "baseUrl": "./", // specifies the base path for module resolution
+    "target": "ES6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "baseUrl": ".",
     "paths": {
-      "*": ["src/*"] // specifies the paths mapping for module resolution
-    },
-    "lib": ["dom", "dom.iterable", "esnext"] // specifies the library files to be included in the compilation
+      "*": ["./src/*"]
+    }
   },
-  "include": ["src/**/*"], // specifies which files should be included in the compilation
-  "exclude": ["node_modules", "**/*.spec.ts"] // specifies which files should be excluded from the compilation
+  "include": ["src"],
+  "exclude": ["node_modules", "build"]
 }

@@ -1,5 +1,3 @@
-import React from "react";
-
 // React map Imports
 import {
   ComposableMap,
@@ -12,13 +10,11 @@ import {
 // Style Import
 import styled from "styled-components";
 
-import features from "/features.json";
-
 export default function Map() {
   return (
     <StyledMap>
       <ComposableMap>
-        <Geographies geography={features}>
+        <Geographies geography="/features.json">
           {({ geographies }) =>
             geographies.map((geo) => {
               return (

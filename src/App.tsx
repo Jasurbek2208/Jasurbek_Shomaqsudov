@@ -1,7 +1,5 @@
-import React from "react";
-
 // Toast
-import { Toaster } from "../node_modules/react-hot-toast/dist/index";
+import { Toaster } from "react-hot-toast";
 
 // Global Styles
 import { GlobalStyles } from "./assets/style/Global";

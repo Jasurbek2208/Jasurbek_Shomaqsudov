@@ -18,7 +18,8 @@
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.11.0",
     "react-simple-maps": "^3.0.0",
-    "styled-components": "^5.3.10"
+    "styled-components": "^5.3.10",
+    "vite-tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

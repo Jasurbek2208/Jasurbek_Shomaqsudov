@@ -1,7 +1,7 @@
 import { CHAT_ID, BOT_TOKEN } from "../../../nothing";
 import React, { useState } from "react";
-import axios from "../../../node_modules/axios/index";
-import toast from "../../../node_modules/react-hot-toast/dist/index";
+import axios from "axios";
+import toast from "react-hot-toast";
 import styled from "styled-components";
 
 // Components
