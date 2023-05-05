@@ -12,7 +12,7 @@ import {
 // Style Import
 import styled from "styled-components";
 
-import features from "./features.json"; // Importing the GeoJSON data
+import features from "../../../public/features.json"; // Importing the GeoJSON data
 
 export default function Map() {
   return (
