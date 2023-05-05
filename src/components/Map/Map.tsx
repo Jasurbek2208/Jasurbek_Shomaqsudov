@@ -7,23 +7,25 @@ import {
   Geography,
   Marker,
   Annotation,
-} from "../../../node_modules/react-simple-maps/dist/index.es.js";
+} from "react-simple-maps";
 
 // Style Import
 import styled from "styled-components";
+
+import features from "./features.json"; // Importing the GeoJSON data
 
 export default function Map() {
   return (
     <StyledMap>
       <ComposableMap>
-        <Geographies geography="/features.json">
+        <Geographies geography={features}>
           {({ geographies }) =>
             geographies.map((geo) => {
               return (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  strokeWidth={.5}
+                  strokeWidth={0.5} // Fixed the typo in strokeWidth
                   style={{
                     default: {
                       fill: geo.id === "UZB" ? "#E42" : "transparent",
