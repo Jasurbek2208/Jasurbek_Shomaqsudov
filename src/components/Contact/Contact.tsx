@@ -123,6 +123,7 @@ export default function Contact(): JSX.Element {
         }
       );
 
+      (e.target as HTMLFormElement).reset();
       toast.success("Message sent successfully!");
     } catch {
       toast.error("There was a problem sending the message. Please try again!");
@@ -149,7 +150,6 @@ export default function Contact(): JSX.Element {
               <span className="error-message">{error.name[1]}</span>
             )}
           </div>
-
           <div className="input">
             <label htmlFor="tel">Phone:</label>
             <Input

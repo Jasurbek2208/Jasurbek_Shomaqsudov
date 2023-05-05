@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
+// Components
+import Loading from "../Loading/Loading";
+
 // Interface
 interface IButton {
   content: String;
@@ -25,6 +28,11 @@ export default function Button({
       onClick={onClick}
     >
       {content}
+      {disable && (
+        <div className="loading">
+          <Loading />
+        </div>
+      )}
     </StyledButton>
   );
 }
@@ -36,6 +44,7 @@ const StyledButton = styled.button`
   width: 100%;
 
   color: #fff;
+  font-size: 0.85rem;
   font-weight: 600;
 
   border: none;
@@ -44,6 +53,25 @@ const StyledButton = styled.button`
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   transition: 400ms;
+
+  .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35px;
+    height: 35px;
+  }
+
+  &:disabled::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.295);
+  }
 
   &.on-animate {
     padding: 14px 16px;

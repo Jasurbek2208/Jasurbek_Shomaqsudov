@@ -67,7 +67,7 @@ const StyledHero = styled.section`
         width: 100%;
         position: absolute;
         animation: illustratorAnimation 8s infinite;
-        z-index: -100;
+        z-index: 1;
       }
     }
 

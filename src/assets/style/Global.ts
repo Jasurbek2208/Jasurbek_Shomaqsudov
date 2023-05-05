@@ -20,7 +20,7 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 body {
-    min-height: 100%;
+    height: 100%;
     overflow: hidden;
 
     background: #141E30; 

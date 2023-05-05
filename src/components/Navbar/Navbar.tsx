@@ -192,7 +192,7 @@ const StyledNavbar = styled.div`
 
         &.close {
           display: block;
-          animation: animatedCloseMenuItems 500ms ease-in-out forwards;
+          animation: animatedCloseMenuItems 200ms ease-in-out forwards;
         }
       }
 

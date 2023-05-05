@@ -68,8 +68,8 @@ const StyledInput = styled.input`
 const StyledTextarea = styled.textarea`
   padding: 15px 10px;
   margin-top: 4px;
+  max-width: 100% !important;
   min-width: 100%;
-  max-width: 100%;
   min-height: 60px;
   max-height: 145px;
 

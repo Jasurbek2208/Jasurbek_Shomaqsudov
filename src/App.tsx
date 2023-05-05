@@ -1,5 +1,8 @@
 import React from "react";
 
+// Toast
+import { Toaster } from "../node_modules/react-hot-toast/dist/index";
+
 // Global Styles
 import { GlobalStyles } from "./assets/style/Global";
 
@@ -15,6 +18,7 @@ function App() {
   return (
     <StyledApp>
       <GlobalStyles />
+      <Toaster />
       <Navbar />
       <Hero />
       <Who />
@@ -33,6 +37,10 @@ const StyledApp = styled.div`
 
   scrollbar-width: none;
   -ms-overflow-style: none;
+
+  background: #141e30;
+  background: -webkit-linear-gradient(to right, #243b55, #141e30);
+  background: linear-gradient(to right, #243b55, #141e30);
 
   &::-webkit-scrollbar {
     display: none;
