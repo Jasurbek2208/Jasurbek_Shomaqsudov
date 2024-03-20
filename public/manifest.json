@@ -54,9 +54,9 @@
   "display": "fullscreen",
   "theme_color": "#141E30",
   "background_color": "#ffffff",
-  "id": "https://shomaqsudov.uz",
+  "id": "https://react-vite-3d-project.vercel.app",
   "dir": "ltr",
-  "scope": "https://shomaqsudov.uz",
+  "scope": "https://react-vite-3d-project.vercel.app",
   "lang": "en",
   "orientation": "portrait",
   "display_override": ["fullscreen", "standalone", "window-controls-overlay"],
@@ -64,8 +64,8 @@
   "related_applications": [
     {
       "platform": "webapp",
-      "url": "https://shomaqsudov.uz/manifest.json",
-      "id": "https://shomaqsudov.uz/manifest.json"
+      "url": "https://react-vite-3d-project.vercel.app/manifest.json",
+      "id": "https://react-vite-3d-project.vercel.app/manifest.json"
     }
   ],
   "features": ["Cross Platform", "fast", "simple"],
