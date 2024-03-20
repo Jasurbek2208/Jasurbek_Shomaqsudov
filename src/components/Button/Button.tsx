@@ -1,40 +1,29 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 // Components
-import Loading from "../Loading/Loading";
+import Loading from '../Loading/Loading'
 
 // Interface
 interface IButton {
-  content: String;
-  type?: "button" | "submit";
-  disable?: boolean | undefined;
-  animatedBtn: Boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  content: String
+  type?: 'button' | 'submit'
+  disable?: boolean | undefined
+  animatedBtn: Boolean
+  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 }
 
-export default function Button({
-  content,
-  type = "button",
-  disable,
-  animatedBtn,
-  onClick,
-}: IButton) {
+export default function Button({ content, type = 'button', disable, animatedBtn, onClick }: IButton) {
   return (
-    <StyledButton
-      className={"button" + (animatedBtn ? " on-animate" : "")}
-      type={type}
-      disabled={disable || false}
-      onClick={onClick}
-    >
+    <StyledButton className={'button' + (animatedBtn ? ' on-animate' : '')} type={type} disabled={disable || false} onClick={onClick}>
       {content}
       {disable && (
-        <div className="loading">
+        <div className='loading'>
           <Loading />
         </div>
       )}
     </StyledButton>
-  );
+  )
 }
 
 const StyledButton = styled.button`
@@ -64,7 +53,7 @@ const StyledButton = styled.button`
   }
 
   &:disabled::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0px;
     left: 0px;
@@ -107,4 +96,4 @@ const StyledButton = styled.button`
       transform: translateX(0px);
     }
   }
-`;
+`

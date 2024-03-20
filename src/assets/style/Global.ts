@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
-import "./fonts.css"
+import './fonts.css'
 export const GlobalStyles = createGlobalStyle`
 * {
     margin: 0px;
@@ -27,4 +27,4 @@ body {
     background: -webkit-linear-gradient(to right, #243B55, #141E30); 
     background: linear-gradient(to right, #243B55, #141E30); 
 }
-`;
+`

@@ -1,10 +1,10 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "outDir": "build",
-    "rootDir": "src",
-    "types": ["node"]
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true
   },
-  "exclude": ["**/__tests__/*", "**/*.test.ts", "**/*.test.tsx"]
+  "include": ["vite.config.ts"]
 }

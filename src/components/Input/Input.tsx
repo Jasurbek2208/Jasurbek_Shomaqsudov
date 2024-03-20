@@ -1,43 +1,23 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 // Interface
 interface IInput {
-  type: string;
-  forID: string;
-  isError: Boolean;
-  placeholder: string;
-  pattern?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
-  onChangeArea?: React.ChangeEventHandler<HTMLTextAreaElement> | undefined;
+  type: string
+  forID: string
+  isError: Boolean
+  placeholder: string
+  pattern?: string
+  onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined
+  onChangeArea?: React.ChangeEventHandler<HTMLTextAreaElement> | undefined
 }
 
-export default function Input({
-  type,
-  forID,
-  isError,
-  placeholder,
-  pattern,
-  onChange,
-  onChangeArea,
-}: IInput) {
-  return type !== "textarea" ? (
-    <StyledInput
-      type={type}
-      id={forID}
-      className={"input" + (isError ? " error-border" : "")}
-      placeholder={placeholder}
-      pattern={pattern}
-      onChange={onChange}
-    />
+export default function Input({ type, forID, isError, placeholder, pattern, onChange, onChangeArea }: IInput) {
+  return type !== 'textarea' ? (
+    <StyledInput type={type} id={forID} className={'input' + (isError ? ' error-border' : '')} placeholder={placeholder} pattern={pattern} onChange={onChange} />
   ) : (
-    <StyledTextarea
-      id={forID}
-      className={"input" + (isError ? " error-border" : "")}
-      placeholder={placeholder}
-      onChange={onChangeArea}
-    />
-  );
+    <StyledTextarea id={forID} className={'input' + (isError ? ' error-border' : '')} placeholder={placeholder} onChange={onChangeArea} />
+  )
 }
 
 const StyledInput = styled.input`
@@ -63,7 +43,7 @@ const StyledInput = styled.input`
     background: rgba(255, 0, 0, 0.404);
     box-shadow: 0 4px 30px rgba(255, 0, 0, 0.1);
   }
-`;
+`
 
 const StyledTextarea = styled.textarea`
   padding: 15px 10px;
@@ -91,4 +71,4 @@ const StyledTextarea = styled.textarea`
     background: rgba(255, 0, 0, 0.404);
     box-shadow: 0 4px 30px rgba(255, 0, 0, 0.1);
   }
-`;
+`

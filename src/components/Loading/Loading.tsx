@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-export default () => <StyledLoading />;
+export default () => <StyledLoading />
 
 const StyledLoading = styled.div`
   border: 4px solid #f3f3f3;
@@ -29,4 +29,4 @@ const StyledLoading = styled.div`
       transform: rotate(360deg);
     }
   }
-`;
+`

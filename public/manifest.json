@@ -1,0 +1,166 @@
+{
+  "short_name": "JS Portfolio",
+  "name": "Jasurbek Shomaqsudov - Software Engineer",
+  "description": "Jasurbek Shomaqsudov is a front-end developer who creates responsive and user-friendly websites. See my portfolio and learn more about my skills, experience.",
+  "shortcuts": [
+    {
+      "name": "Profile settings",
+      "short_name": "Profile settings",
+      "description": "Go to Profile settings",
+      "url": "/user/settings",
+      "icons": [
+        {
+          "src": "userSettings.svg",
+          "sizes": "64x64 32x32 24x24 16x16"
+        },
+        {
+          "src": "userSettings.svg",
+          "sizes": "72x72"
+        },
+        {
+          "src": "userSettings.svg",
+          "sizes": "96x96"
+        },
+        {
+          "src": "userSettings.svg",
+          "sizes": "128x128"
+        },
+        {
+          "src": "userSettings.svg",
+          "sizes": "144x144"
+        },
+        {
+          "src": "userSettings.svg",
+          "sizes": "152x152"
+        },
+        {
+          "src": "userSettings.svg",
+          "sizes": "192x192"
+        },
+        {
+          "src": "userSettings.svg",
+          "sizes": "384x384"
+        },
+        {
+          "src": "userSettings.svg",
+          "sizes": "512x512"
+        }
+      ]
+    },
+    {
+      "name": "Product Add",
+      "short_name": "Product Add",
+      "description": "Product add page",
+      "url": "/products/add",
+      "icons": [
+        {
+          "src": "plus.svg",
+          "sizes": "64x64 32x32 24x24 16x16"
+        },
+        {
+          "src": "plus.svg",
+          "sizes": "72x72"
+        },
+        {
+          "src": "plus.svg",
+          "sizes": "96x96"
+        },
+        {
+          "src": "plus.svg",
+          "sizes": "128x128"
+        },
+        {
+          "src": "plus.svg",
+          "sizes": "144x144"
+        },
+        {
+          "src": "plus.svg",
+          "sizes": "152x152"
+        },
+        {
+          "src": "plus.svg",
+          "sizes": "192x192"
+        },
+        {
+          "src": "plus.svg",
+          "sizes": "384x384"
+        },
+        {
+          "src": "plus.svg",
+          "sizes": "512x512"
+        }
+      ]
+    }
+  ],
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "152x152",
+      "purpose": "any"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "384x384"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "fullscreen",
+  "theme_color": "#141E30",
+  "background_color": "#ffffff",
+  "id": "https://shomaqsudov.uz",
+  "dir": "ltr",
+  "scope": "https://shomaqsudov.uz",
+  "lang": "en",
+  "orientation": "portrait",
+  "display_override": ["fullscreen", "standalone", "window-controls-overlay"],
+  "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://shomaqsudov.uz/manifest.json",
+      "id": "https://shomaqsudov.uz/manifest.json"
+    }
+  ],
+  "features": ["Cross Platform", "fast", "simple"],
+  "categories": ["portfolio", "programming", "personalization", "social"],
+  "edge_side_panel": {
+    "preferred_width": 460
+  }
+}

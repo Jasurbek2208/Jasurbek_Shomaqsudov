@@ -1,70 +1,65 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
+import { useEffect, useState } from 'react'
+import styled from 'styled-components'
 
 // Components
-import Button from "../Button/Button";
+import Button from '../Button/Button'
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState<Boolean>(false);
-  const [navItems, setNavItems] = useState<Boolean>(false);
-  const [renderCount, setRenderCount] = useState<number>(0);
+  const [menuOpen, setMenuOpen] = useState<Boolean>(false)
+  const [navItems, setNavItems] = useState<Boolean>(false)
+  const [renderCount, setRenderCount] = useState<number>(0)
 
   useEffect(() => {
-    setRenderCount((p: number) => ++p);
-  }, [menuOpen]);
+    setRenderCount((p: number) => ++p)
+  }, [menuOpen])
 
   useEffect(() => {
     if (renderCount > 2) {
-      menuOpen ? setNavItems(false) : setNavItems(true);
+      menuOpen ? setNavItems(false) : setNavItems(true)
     }
-  }, [renderCount]);
+  }, [renderCount])
 
   return (
     <StyledNavbar>
-      <div className={"menubar-modal" + (menuOpen ? " open" : " close")}></div>
+      <div className={'menubar-modal' + (menuOpen ? ' open' : ' close')}></div>
 
-      <div className="container">
-        <div
-          className={"nav" + (menuOpen ? " open" : navItems ? " close" : "")}
-        >
+      <div className='container'>
+        <div className={'nav' + (menuOpen ? ' open' : navItems ? ' close' : '')}>
           <ul>
             <li>
-              <a href="#hero" onClick={() => setMenuOpen((p) => !p)}>
+              <a href='#hero' onClick={() => setMenuOpen((p) => !p)}>
                 Home
               </a>
             </li>
             <li>
-              <a href="#who" onClick={() => setMenuOpen((p) => !p)}>
+              <a href='#who' onClick={() => setMenuOpen((p) => !p)}>
                 About
               </a>
             </li>
             <li>
-              <a href="#works" onClick={() => setMenuOpen((p) => !p)}>
+              <a href='#works' onClick={() => setMenuOpen((p) => !p)}>
                 Works
               </a>
             </li>
             <li>
-              <a href="#contact" onClick={() => setMenuOpen((p) => !p)}>
+              <a href='#contact' onClick={() => setMenuOpen((p) => !p)}>
                 Contact
               </a>
             </li>
           </ul>
         </div>
-        <div
-          className={"mobile-menu" + (menuOpen ? " On" : "")}
-          onClick={() => setMenuOpen((p) => !p)}
-        >
+        <div className={'mobile-menu' + (menuOpen ? ' On' : '')} onClick={() => setMenuOpen((p) => !p)}>
           <span></span>
           <span></span>
           <span></span>
           <span></span>
         </div>
-        <div className="action">
-          <Button content="Get work" animatedBtn={true} />
+        <div className='action'>
+          <Button content='Get work' animatedBtn={true} />
         </div>
       </div>
     </StyledNavbar>
-  );
+  )
 }
 
 const StyledNavbar = styled.div`
@@ -255,7 +250,7 @@ const StyledNavbar = styled.div`
     }
 
     .menubar-modal {
-      content: "";
+      content: '';
       position: fixed;
       top: 0;
       left: 0;
@@ -334,4 +329,4 @@ const StyledNavbar = styled.div`
       display: none;
     }
   }
-`;
+`

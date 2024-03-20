@@ -1,25 +1,22 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export default function Hero() {
   return (
-    <StyledHero id="hero">
-      <div className="container full-h">
+    <StyledHero id='hero'>
+      <div className='container full-h'>
         <main>
-          <div className="description">
+          <div className='description'>
             <h1>Frontend developer</h1>
             <h3>Jasurbek Shomaqsudov</h3>
             <p>Check out the site to learn more about me.</p>
           </div>
-          <div className="image">
-            <img
-              src="illustrators/developer.webp"
-              alt="frontend developer illustrator"
-            />
+          <div className='image'>
+            <img src='illustrators/developer.webp' alt='frontend developer illustrator' />
           </div>
         </main>
       </div>
     </StyledHero>
-  );
+  )
 }
 
 const StyledHero = styled.section`
@@ -35,7 +32,7 @@ const StyledHero = styled.section`
 
     gap: 40px;
     row-gap: 0px;
-    
+
     .description {
       color: #fff;
 
@@ -123,4 +120,4 @@ const StyledHero = styled.section`
       transform: scale(1);
     }
   }
-`;
+`
