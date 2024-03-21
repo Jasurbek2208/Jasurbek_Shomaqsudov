@@ -57,7 +57,7 @@ const NavbarBlock = block(
             <span></span>
           </div>
           <div className='action'>
-            <Button content='Get work' animatedBtn={true} />
+            <Button content='Send Order' animatedBtn={true} />
           </div>
         </div>
       </StyledNavbar>

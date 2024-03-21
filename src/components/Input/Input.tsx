@@ -1,4 +1,5 @@
 import React from 'react'
+import { block } from 'million/react'
 import styled from 'styled-components'
 
 // Interface
@@ -12,13 +13,13 @@ interface IInput {
   onChangeArea?: React.ChangeEventHandler<HTMLTextAreaElement> | undefined
 }
 
-export default function Input({ type, forID, isError, placeholder, pattern, onChange, onChangeArea }: IInput) {
+const InputBlock: React.FC<IInput> = block(function Input({ type, forID, isError, placeholder, pattern, onChange, onChangeArea }: IInput): JSX.Element {
   return type !== 'textarea' ? (
     <StyledInput type={type} id={forID} className={'input' + (isError ? ' error-border' : '')} placeholder={placeholder} pattern={pattern} onChange={onChange} />
   ) : (
     <StyledTextarea id={forID} className={'input' + (isError ? ' error-border' : '')} placeholder={placeholder} onChange={onChangeArea} />
   )
-}
+})
 
 const StyledInput = styled.input`
   padding: 15px 10px;
@@ -73,3 +74,5 @@ const StyledTextarea = styled.textarea`
     box-shadow: 0 4px 30px rgba(255, 0, 0, 0.1);
   }
 `
+
+export default InputBlock

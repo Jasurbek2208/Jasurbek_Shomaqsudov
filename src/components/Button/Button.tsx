@@ -1,4 +1,5 @@
 import React from 'react'
+import { block } from 'million/react'
 import styled from 'styled-components'
 
 // Components
@@ -13,18 +14,21 @@ interface IButton {
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 }
 
-export default function Button({ content, type = 'button', disable, animatedBtn, onClick }: IButton) {
-  return (
-    <StyledButton className={'button' + (animatedBtn ? ' on-animate' : '')} type={type} disabled={disable || false} onClick={onClick}>
-      {content}
-      {disable && (
-        <div className='loading'>
-          <Loading />
-        </div>
-      )}
-    </StyledButton>
-  )
-}
+const ButtonBlock: React.FC<IButton> = block(
+  function Button({ content, type = 'button', disable, animatedBtn, onClick }: IButton): JSX.Element {
+    return (
+      <StyledButton className={'button' + (animatedBtn ? ' on-animate' : '')} type={type} disabled={disable || false} onClick={onClick}>
+        {content}
+        {disable && (
+          <div className='loading'>
+            <Loading />
+          </div>
+        )}
+      </StyledButton>
+    )
+  },
+  { as: 'button' },
+)
 
 const StyledButton = styled.button`
   cursor: pointer;
@@ -97,3 +101,5 @@ const StyledButton = styled.button`
     }
   }
 `
+
+export default ButtonBlock
