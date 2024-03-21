@@ -1,30 +1,31 @@
+import { block } from 'million/react'
+import styled from 'styled-components'
+
 // Toast
-import { Toaster } from "react-hot-toast";
+import { Toaster } from 'react-hot-toast'
 
 // Global Styles
-import { GlobalStyles } from "./assets/style/Global";
+import { GlobalStyles } from 'assets/style/Global'
 
 // Components
-import Who from "./components/Who/Who";
-import Hero from "./components/Hero/Hero";
-import Works from "./components/Works/Works";
-import Navbar from "./components/Navbar/Navbar";
-import Contact from "./components/Contact/Contact";
-import styled from "styled-components";
+import { Contact, Hero, Navbar, Who, Works } from 'components'
 
-function App() {
-  return (
-    <StyledApp>
-      <GlobalStyles />
-      <Toaster />
-      <Navbar />
-      <Hero />
-      <Who />
-      <Works />
-      <Contact />
-    </StyledApp>
-  );
-}
+const AppBlock = block(
+  function App(): JSX.Element {
+    return (
+      <StyledApp>
+        <GlobalStyles />
+        <Toaster />
+        <Navbar />
+        <Hero />
+        <Who />
+        <Works />
+        <Contact />
+      </StyledApp>
+    )
+  },
+  { as: 'div' },
+)
 
 const StyledApp = styled.div`
   height: 100vh;
@@ -43,6 +44,6 @@ const StyledApp = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-`;
+`
 
-export default App;
+export default AppBlock

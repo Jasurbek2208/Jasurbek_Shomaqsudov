@@ -1,23 +1,27 @@
+import { block } from 'million/react'
 import styled from 'styled-components'
 
-export default function Hero() {
-  return (
-    <StyledHero id='hero'>
-      <div className='container full-h'>
-        <main>
-          <div className='description'>
-            <h1>Frontend developer</h1>
-            <h3>Jasurbek Shomaqsudov</h3>
-            <p>Check out the site to learn more about me.</p>
-          </div>
-          <div className='image'>
-            <img src='illustrators/developer.webp' alt='frontend developer illustrator' />
-          </div>
-        </main>
-      </div>
-    </StyledHero>
-  )
-}
+const HeroBlock = block(
+  function Hero() {
+    return (
+      <StyledHero id='hero'>
+        <div className='container full-h'>
+          <main>
+            <div className='description'>
+              <h1>Frontend developer</h1>
+              <h3>Jasurbek Shomaqsudov</h3>
+              <p>Check out the site to learn more about me.</p>
+            </div>
+            <div className='image'>
+              <img src='illustrators/developer.webp' alt='frontend developer illustrator' />
+            </div>
+          </main>
+        </div>
+      </StyledHero>
+    )
+  },
+  { as: 'section' },
+)
 
 const StyledHero = styled.section`
   scroll-snap-align: end;
@@ -68,7 +72,7 @@ const StyledHero = styled.section`
     }
 
     @media (max-width: 940px) {
-      padding-top: 160px;
+      /* padding-top: 160px; */
 
       .description {
         h1 {
@@ -92,6 +96,14 @@ const StyledHero = styled.section`
           animation: illustratorAnimation 10s infinite;
         }
       }
+    }
+  }
+
+  @media (max-width: 940px) {
+    padding-top: 100px;
+
+    .image {
+      margin-top: -300px;
     }
   }
 
@@ -121,3 +133,5 @@ const StyledHero = styled.section`
     }
   }
 `
+
+export default HeroBlock
