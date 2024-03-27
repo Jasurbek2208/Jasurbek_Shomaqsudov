@@ -22,55 +22,55 @@
   ],
   "icons": [
     {
-      "src": "/public/logo.png",
+      "src": "./logo.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/public/logo.png",
+      "src": "./logo.png",
       "type": "image/png",
       "sizes": "72x72",
       "purpose": "any"
     },
     {
-      "src": "/public/logo.png",
+      "src": "./logo.png",
       "type": "image/png",
       "sizes": "96x96",
       "purpose": "any"
     },
     {
-      "src": "/public/logo.png",
+      "src": "./logo.png",
       "type": "image/png",
       "sizes": "128x128",
       "purpose": "any"
     },
     {
-      "src": "/public/logo.png",
+      "src": "./logo.png",
       "type": "image/png",
       "sizes": "144x144",
       "purpose": "any"
     },
     {
-      "src": "/public/logo.png",
+      "src": "./logo.png",
       "type": "image/png",
       "sizes": "152x152",
       "purpose": "any"
     },
     {
-      "src": "/public/logo.png",
+      "src": "./logo.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "maskable"
     },
     {
-      "src": "/public/logo.png",
+      "src": "./logo.png",
       "type": "image/png",
       "sizes": "384x384",
       "purpose": "any"
     },
     {
-      "src": "/public/logo.png",
+      "src": "./logo.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
@@ -84,39 +84,39 @@
       "url": "/",
       "icons": [
         {
-          "src": "/public/logo.png",
+          "src": "./logo.png",
           "sizes": "64x64 32x32 24x24 16x16"
         },
         {
-          "src": "/public/logo.png",
+          "src": "./logo.png",
           "sizes": "72x72"
         },
         {
-          "src": "/public/logo.png",
+          "src": "./logo.png",
           "sizes": "96x96"
         },
         {
-          "src": "/public/logo.png",
+          "src": "./logo.png",
           "sizes": "128x128"
         },
         {
-          "src": "/public/logo.png",
+          "src": "./logo.png",
           "sizes": "144x144"
         },
         {
-          "src": "/public/logo.png",
+          "src": "./logo.png",
           "sizes": "152x152"
         },
         {
-          "src": "/public/logo.png",
+          "src": "./logo.png",
           "sizes": "192x192"
         },
         {
-          "src": "/public/logo.png",
+          "src": "./logo.png",
           "sizes": "384x384"
         },
         {
-          "src": "/public/logo.png",
+          "src": "./logo.png",
           "sizes": "512x512"
         }
       ]
