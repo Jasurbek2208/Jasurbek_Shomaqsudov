@@ -37,7 +37,8 @@
     {
       "src": "logo.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "maskable"
     },
     {
       "src": "logo.png",
@@ -51,7 +52,6 @@
     }
   ],
   "start_url": "/",
-  "display": "fullscreen",
   "theme_color": "#141E30",
   "background_color": "#ffffff",
   "id": "JS Portfolio",
@@ -59,11 +59,12 @@
   "scope": "https://shomaqsudov.uz",
   "lang": "en",
   "orientation": "portrait",
-  "display_override": ["fullscreen", "standalone", "window-controls-overlay"],
+  "display_override": ["window-controls-overlay", "standalone", "fullscreen"],
+  "display": "fullscreen",
   "prefer_related_applications": false,
   "related_applications": [
     {
-      "platform": "webapp",
+      "platform": "chrome_web_store",
       "url": "https://shomaqsudov.uz/manifest.json",
       "id": "https://shomaqsudov.uz/manifest.json"
     }
