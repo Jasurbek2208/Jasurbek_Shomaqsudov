@@ -23,7 +23,6 @@ export default defineConfig({
     commonjsOptions: {
       ignoreDynamicRequires: true,
     },
-    manifest: true,
   },
   plugins: [million.vite({ auto: true }), react(), reactRefresh(), tsconfigPaths()],
   optimizeDeps: {
