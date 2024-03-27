@@ -1,72 +1,125 @@
 {
-  "short_name": "JS Portfolio",
   "name": "Jasurbek Shomaqsudov - Software Engineer",
+  "short_name": "JS Portfolio",
   "description": "Jasurbek Shomaqsudov is a front-end developer who creates responsive and user-friendly websites. See my portfolio and learn more about my skills, experience.",
-  "icons": [
-    {
-      "src": "logo.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/png"
-    },
-    {
-      "src": "logo.png",
-      "type": "image/png",
-      "sizes": "72x72"
-    },
-    {
-      "src": "logo.png",
-      "type": "image/png",
-      "sizes": "96x96"
-    },
-    {
-      "src": "logo.png",
-      "type": "image/png",
-      "sizes": "128x128"
-    },
-    {
-      "src": "logo.png",
-      "type": "image/png",
-      "sizes": "144x144"
-    },
-    {
-      "src": "logo.png",
-      "type": "image/png",
-      "sizes": "152x152",
-      "purpose": "any"
-    },
-    {
-      "src": "logo.png",
-      "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "maskable"
-    },
-    {
-      "src": "logo.png",
-      "type": "image/png",
-      "sizes": "384x384"
-    },
-    {
-      "src": "logo.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "start_url": "/",
+  "id": "js-portfolio",
+  "start_url": ".",
   "theme_color": "#141E30",
-  "background_color": "#ffffff",
-  "id": "JS Portfolio",
-  "dir": "ltr",
-  "scope": "https://shomaqsudov.uz",
-  "lang": "en",
-  "orientation": "portrait",
-  "display_override": ["window-controls-overlay", "standalone", "fullscreen"],
+  "background_color": "#141E30",
   "display": "fullscreen",
+  "display_override": ["fullscreen", "window-controls-overlay", "standalone"],
+  "orientation": "portrait",
+  "dir": "ltr",
+  "scope": "/",
+  "lang": "en",
   "prefer_related_applications": false,
   "related_applications": [
     {
       "platform": "chrome_web_store",
       "url": "https://shomaqsudov.uz/manifest.json",
-      "id": "https://shomaqsudov.uz/manifest.json"
+      "id": "js-portfolio"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/public/logo.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/public/logo.png",
+      "type": "image/png",
+      "sizes": "72x72",
+      "purpose": "any"
+    },
+    {
+      "src": "/public/logo.png",
+      "type": "image/png",
+      "sizes": "96x96",
+      "purpose": "any"
+    },
+    {
+      "src": "/public/logo.png",
+      "type": "image/png",
+      "sizes": "128x128",
+      "purpose": "any"
+    },
+    {
+      "src": "/public/logo.png",
+      "type": "image/png",
+      "sizes": "144x144",
+      "purpose": "any"
+    },
+    {
+      "src": "/public/logo.png",
+      "type": "image/png",
+      "sizes": "152x152",
+      "purpose": "any"
+    },
+    {
+      "src": "/public/logo.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/public/logo.png",
+      "type": "image/png",
+      "sizes": "384x384",
+      "purpose": "any"
+    },
+    {
+      "src": "/public/logo.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Home",
+      "short_name": "Home",
+      "description": "Go to Home",
+      "url": "/",
+      "icons": [
+        {
+          "src": "/public/logo.png",
+          "sizes": "64x64 32x32 24x24 16x16"
+        },
+        {
+          "src": "/public/logo.png",
+          "sizes": "72x72"
+        },
+        {
+          "src": "/public/logo.png",
+          "sizes": "96x96"
+        },
+        {
+          "src": "/public/logo.png",
+          "sizes": "128x128"
+        },
+        {
+          "src": "/public/logo.png",
+          "sizes": "144x144"
+        },
+        {
+          "src": "/public/logo.png",
+          "sizes": "152x152"
+        },
+        {
+          "src": "/public/logo.png",
+          "sizes": "192x192"
+        },
+        {
+          "src": "/public/logo.png",
+          "sizes": "384x384"
+        },
+        {
+          "src": "/public/logo.png",
+          "sizes": "512x512"
+        }
+      ]
     }
   ],
   "features": ["Cross Platform", "fast", "simple"],
