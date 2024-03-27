@@ -1,10 +1,8 @@
 import { block } from 'million/react'
+import styled from 'styled-components'
 
 // React map Imports
 import { ComposableMap, Geographies, Geography, Marker, Annotation } from 'react-simple-maps'
-
-// Style Import
-import styled from 'styled-components'
 
 const MapBlock = block(
   function Map(): JSX.Element {
@@ -13,28 +11,26 @@ const MapBlock = block(
         <ComposableMap>
           <Geographies geography='/features.json'>
             {({ geographies }) =>
-              geographies.map((geo) => {
-                return (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    strokeWidth={0.5} // Fixed the typo in strokeWidth
-                    style={{
-                      default: {
-                        fill: geo.id === 'UZB' ? '#E42' : 'transparent',
-                        stroke: '#000000',
-                      },
-                      hover: {
-                        fill: 'transparent',
-                        stroke: '#000000',
-                      },
-                      pressed: {
-                        fill: '#E42',
-                      },
-                    }}
-                  />
-                )
-              })
+              geographies?.map((item: any, index: number) => (
+                <Geography
+                  key={item?.rsmKey || String(index)}
+                  geography={item}
+                  strokeWidth={0.5}
+                  style={{
+                    default: {
+                      fill: item.id === 'UZB' ? '#E42' : 'transparent',
+                      stroke: '#000000',
+                    },
+                    hover: {
+                      fill: 'transparent',
+                      stroke: '#000000',
+                    },
+                    pressed: {
+                      fill: '#E42',
+                    },
+                  }}
+                />
+              ))
             }
           </Geographies>
           <Marker coordinates={[69.27782177925111, 41.35158489075851]}>

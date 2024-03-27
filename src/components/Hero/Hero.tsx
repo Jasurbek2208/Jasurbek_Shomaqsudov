@@ -13,7 +13,7 @@ const HeroBlock = block(
               <p>Check out the site to learn more about me.</p>
             </div>
             <div className='image'>
-              <img src='illustrators/developer.webp' alt='frontend developer illustrator' />
+              <img src='illustrators/developer.webp' alt='frontend developer illustrator' loading='lazy' />
             </div>
           </main>
         </div>

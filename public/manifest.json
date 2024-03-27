@@ -4,49 +4,49 @@
   "description": "Jasurbek Shomaqsudov is a front-end developer who creates responsive and user-friendly websites. See my portfolio and learn more about my skills, experience.",
   "icons": [
     {
-      "src": "logo.png",
+      "src": "logo.webp",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/png"
+      "type": "image/webp"
     },
     {
-      "src": "logo.png",
-      "type": "image/png",
+      "src": "logo.webp",
+      "type": "image/webp",
       "sizes": "72x72"
     },
     {
-      "src": "logo.png",
-      "type": "image/png",
+      "src": "logo.webp",
+      "type": "image/webp",
       "sizes": "96x96"
     },
     {
-      "src": "logo.png",
-      "type": "image/png",
+      "src": "logo.webp",
+      "type": "image/webp",
       "sizes": "128x128"
     },
     {
-      "src": "logo.png",
-      "type": "image/png",
+      "src": "logo.webp",
+      "type": "image/webp",
       "sizes": "144x144"
     },
     {
-      "src": "logo.png",
-      "type": "image/png",
+      "src": "logo.webp",
+      "type": "image/webp",
       "sizes": "152x152",
       "purpose": "any"
     },
     {
-      "src": "logo.png",
-      "type": "image/png",
+      "src": "logo.webp",
+      "type": "image/webp",
       "sizes": "192x192"
     },
     {
-      "src": "logo.png",
-      "type": "image/png",
+      "src": "logo.webp",
+      "type": "image/webp",
       "sizes": "384x384"
     },
     {
-      "src": "logo.png",
-      "type": "image/png",
+      "src": "logo.webp",
+      "type": "image/webp",
       "sizes": "512x512"
     }
   ],
@@ -54,9 +54,9 @@
   "display": "fullscreen",
   "theme_color": "#141E30",
   "background_color": "#ffffff",
-  "id": "https://react-vite-3d-project.vercel.app",
+  "id": "JS Portfolio",
   "dir": "ltr",
-  "scope": "https://react-vite-3d-project.vercel.app",
+  "scope": "https://shomaqsudov.uz",
   "lang": "en",
   "orientation": "portrait",
   "display_override": ["fullscreen", "standalone", "window-controls-overlay"],
@@ -64,8 +64,8 @@
   "related_applications": [
     {
       "platform": "webapp",
-      "url": "https://react-vite-3d-project.vercel.app/manifest.json",
-      "id": "https://react-vite-3d-project.vercel.app/manifest.json"
+      "url": "https://shomaqsudov.uz/manifest.json",
+      "id": "https://shomaqsudov.uz/manifest.json"
     }
   ],
   "features": ["Cross Platform", "fast", "simple"],

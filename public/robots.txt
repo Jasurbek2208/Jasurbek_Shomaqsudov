@@ -2,10 +2,5 @@ User-agent: *
 Allow: /
 
 Disallow: /assets/
-Disallow: /login
-Disallow: /register
-Disallow: /forgot-password
-Disallow: /savedProducts
-Disallow: /orderedProducts
 
-Sitemap: https://flakon.uz/sitemap
+Sitemap: https://shomaqsudov.uz/sitemap.xml

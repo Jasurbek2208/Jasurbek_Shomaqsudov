@@ -8,7 +8,7 @@ import { Toaster } from 'react-hot-toast'
 import { GlobalStyles } from 'assets/style/Global'
 
 // Components
-import { Contact, Hero, Navbar, Who, Works } from 'components'
+import { Contact, Hero, Navbar, About, Works } from 'components'
 
 const AppBlock = block(
   function App(): JSX.Element {
@@ -18,7 +18,7 @@ const AppBlock = block(
         <Toaster />
         <Navbar />
         <Hero />
-        <Who />
+        <About />
         <Works />
         <Contact />
       </StyledApp>
@@ -28,7 +28,7 @@ const AppBlock = block(
 )
 
 const StyledApp = styled.div`
-  height: 100vh;
+  height: 100dvh;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   overflow-y: auto;

@@ -34,7 +34,7 @@ const NavbarBlock = block(
                 </a>
               </li>
               <li>
-                <a href='#who' onClick={() => setMenuOpen((p) => !p)}>
+                <a href='#about' onClick={() => setMenuOpen((p) => !p)}>
                   About
                 </a>
               </li>
@@ -63,10 +63,10 @@ const NavbarBlock = block(
       </StyledNavbar>
     )
   },
-  { as: 'div' },
+  { as: 'nav' },
 )
 
-const StyledNavbar = styled.div`
+const StyledNavbar = styled.nav`
   padding: 10px 0px;
 
   position: fixed;
