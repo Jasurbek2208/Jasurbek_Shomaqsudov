@@ -8,8 +8,8 @@ const HeroBlock = block(
         <div className='container full-h'>
           <main>
             <div className='description'>
-              <h1>Frontend developer</h1>
-              <h3>Jasurbek Shomaqsudov</h3>
+              <h1>Jasurbek Shomaqsudov</h1>
+              <h4>Frontend developer</h4>
               <p>Check out the site to learn more about me.</p>
             </div>
             <div className='image'>
@@ -25,9 +25,10 @@ const HeroBlock = block(
 
 const StyledHero = styled.section`
   scroll-snap-align: end;
+  height: 100dvh;
 
   .container > main {
-    height: 100%;
+    height: 100dvh;
 
     display: flex;
     align-items: center;
@@ -41,13 +42,13 @@ const StyledHero = styled.section`
       color: #fff;
 
       h1 {
-        font-size: 3rem;
+        font-size: 2.9rem;
         animation: fadeIn 500ms ease-in-out;
       }
 
-      h3 {
-        margin: 12px 0px;
-        font-size: 2rem;
+      h4 {
+        margin: 14px 0px;
+        font-size: 1.5rem;
         animation: fadeIn 600ms ease-in-out;
       }
 
@@ -72,8 +73,6 @@ const StyledHero = styled.section`
     }
 
     @media (max-width: 940px) {
-      /* padding-top: 160px; */
-
       .description {
         h1 {
           font-size: 2.4rem;
@@ -97,13 +96,13 @@ const StyledHero = styled.section`
         }
       }
     }
-  }
 
-  @media (max-width: 940px) {
-    padding-top: 100px;
-
-    .image {
-      margin-top: -300px;
+    @media (max-width: 789px) {
+      padding-top: 160px;
+      
+      .image {
+        margin-top: -140px;
+      }
     }
   }
 

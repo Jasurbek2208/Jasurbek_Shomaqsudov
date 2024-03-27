@@ -8,12 +8,13 @@ import { Toaster } from 'react-hot-toast'
 import { GlobalStyles } from 'assets/style/Global'
 
 // Components
-import { Contact, Hero, Navbar, About, Works } from 'components'
+import { Contact, Hero, Navbar, About, Works, MatrixLoader } from 'components'
 
 const AppBlock = block(
   function App(): JSX.Element {
     return (
       <StyledApp>
+        <MatrixLoader />
         <GlobalStyles />
         <Toaster />
         <Navbar />
@@ -37,9 +38,9 @@ const StyledApp = styled.div`
   scrollbar-width: none;
   -ms-overflow-style: none;
 
-  background: #141e30;
-  background: -webkit-linear-gradient(to right, #243b55, #141e30);
-  background: linear-gradient(to right, #243b55, #141e30);
+  background: #141e30c0;
+  background: -webkit-linear-gradient(to right, #243b55ab, #141e30ab);
+  background: linear-gradient(to right, #243b55ab, #141e30ab);
 
   &::-webkit-scrollbar {
     display: none;

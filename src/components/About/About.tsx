@@ -31,6 +31,7 @@ const AboutBlock = block(
 
 const StyledAbout = styled.section`
   scroll-snap-align: end;
+  height: 100dvh;
 
   .container > main {
     display: flex;

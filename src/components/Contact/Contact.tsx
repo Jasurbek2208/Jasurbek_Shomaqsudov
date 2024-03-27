@@ -186,6 +186,7 @@ const ContactBlock = block(
 
 const StyledContact = styled.section`
   scroll-snap-align: center;
+  height: 100dvh;
 
   .container {
     position: relative;
