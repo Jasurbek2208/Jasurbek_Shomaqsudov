@@ -13,8 +13,8 @@ const WorksBlock = block(
 )
 
 const StyledWorks = styled.section`
-  scroll-snap-align: center;
-  height: 100dvh;
+  /* scroll-snap-align: center;
+  height: 100dvh; */
 `
 
 export default WorksBlock

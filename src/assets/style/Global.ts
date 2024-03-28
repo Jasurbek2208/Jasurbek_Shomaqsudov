@@ -16,12 +16,12 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 .full-h {
-    height: 100vh;
+    height: 100dvh;
 }
 
 body {
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
 
     background: #141E30; 
     background: -webkit-linear-gradient(to right, #243B55, #141E30); 

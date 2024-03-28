@@ -29,10 +29,10 @@ const AppBlock = block(
 )
 
 const StyledApp = styled.div`
-  height: 100dvh;
+  height: 100%;
+  min-height: 100dvh;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
   scrollbar-width: none;

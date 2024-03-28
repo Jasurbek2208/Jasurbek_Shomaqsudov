@@ -6,9 +6,6 @@ import styled from 'styled-components'
 // Toast
 import toast from 'react-hot-toast'
 
-// Constants
-import { CHAT_ID, BOT_TOKEN } from '../../../nothing'
-
 // Components
 import { Input, Map, Button } from 'components'
 
@@ -97,7 +94,7 @@ const ContactBlock = block(
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
       e.preventDefault()
 
-      const API_URL = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`
+      const API_URL = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`
 
       let name: string = (e.currentTarget[0] as HTMLInputElement).value
       let phone: string = (e.currentTarget[1] as HTMLInputElement).value
@@ -111,7 +108,7 @@ const ContactBlock = block(
         await axios.post(
           API_URL,
           {
-            chat_id: CHAT_ID,
+            chat_id: process.env.TELEGRAM_CHAT_ID,
             parse_mode: 'html',
             text,
           },
@@ -185,8 +182,8 @@ const ContactBlock = block(
 )
 
 const StyledContact = styled.section`
-  scroll-snap-align: center;
-  height: 100dvh;
+  /* scroll-snap-align: center;
+  height: 100dvh; */
 
   .container {
     position: relative;

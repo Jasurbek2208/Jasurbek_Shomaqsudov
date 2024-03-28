@@ -24,9 +24,6 @@ const HeroBlock = block(
 )
 
 const StyledHero = styled.section`
-  scroll-snap-align: end;
-  height: 100dvh;
-
   .container > main {
     height: 100dvh;
 
