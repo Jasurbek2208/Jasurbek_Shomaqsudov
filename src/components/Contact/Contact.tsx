@@ -94,7 +94,7 @@ const ContactBlock = block(
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
       e.preventDefault()
 
-      const API_URL = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`
+      const API_URL = `https://api.telegram.org/bot${import.meta.env.VITE_TELEGRAM_BOT_TOKEN}/sendMessage`
 
       let name: string = (e.currentTarget[0] as HTMLInputElement).value
       let phone: string = (e.currentTarget[1] as HTMLInputElement).value
@@ -108,7 +108,7 @@ const ContactBlock = block(
         await axios.post(
           API_URL,
           {
-            chat_id: process.env.TELEGRAM_CHAT_ID,
+            chat_id: import.meta.env.VITE_TELEGRAM_CHAT_ID,
             parse_mode: 'html',
             text,
           },
