@@ -157,7 +157,7 @@ const AboutBlock = block(
 
               <Slider ref={sliderSkillsRef} {...sliderSettings} className='clients_slider'>
                 {skills?.map((skill: IClient, index: number) => (
-                  <div className='client-slider' tabIndex={-1} key={skill?.id}>
+                  <div className='client-slider' tabIndex={-1} key={String(index)}>
                     <div style={{ background: `url(${skill?.image})` }}></div>
                   </div>
                 ))}
