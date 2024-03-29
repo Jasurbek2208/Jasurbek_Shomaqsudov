@@ -1,5 +1,5 @@
 import { block } from 'million/react'
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 
 // Toast
 import { Toaster } from 'react-hot-toast'
@@ -28,7 +28,7 @@ const AppBlock = block(
   { as: 'div' },
 )
 
-const StyledApp = styled.div`
+const StyledApp: StyledComponent<'div', any, {}, never> = styled.div`
   height: 100%;
   min-height: 100dvh;
   scroll-snap-type: y mandatory;

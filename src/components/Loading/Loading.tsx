@@ -1,8 +1,8 @@
 import { block } from 'million/react'
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 const LoadingBlock: React.FC = block(() => <StyledLoading />)
 
-const StyledLoading = styled.div`
+const StyledLoading: StyledComponent<'div', any, {}, never> = styled.div`
   border: 4px solid #f3f3f3;
   border-radius: 50%;
   border-top: 4px solid #234179;

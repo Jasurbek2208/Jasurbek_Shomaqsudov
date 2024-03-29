@@ -1,6 +1,6 @@
 import { block } from 'million/react'
 import { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 
 // Components
 import { Button } from 'components'
@@ -66,7 +66,7 @@ const NavbarBlock = block(
   { as: 'nav' },
 )
 
-const StyledNavbar = styled.nav`
+const StyledNavbar: StyledComponent<'nav', any, {}, never> = styled.nav`
   padding: 10px 0px;
 
   position: fixed;

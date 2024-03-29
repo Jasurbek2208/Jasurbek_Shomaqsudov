@@ -1,23 +1,24 @@
 import React from 'react'
 import { block } from 'million/react'
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 
 // Components
 import Loading from '../Loading/Loading'
 
-// Interface
+// Types
 interface IButton {
-  content: String
+  content: string
+  classname?: string
+  animatedBtn?: boolean
   type?: 'button' | 'submit'
   disable?: boolean | undefined
-  animatedBtn: Boolean
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 }
 
 const ButtonBlock: React.FC<IButton> = block(
-  function Button({ content, type = 'button', disable, animatedBtn, onClick }: IButton): JSX.Element {
+  function Button({ content, type = 'button', disable, animatedBtn = false, classname = '', onClick }: IButton): JSX.Element {
     return (
-      <StyledButton className={'button' + (animatedBtn ? ' on-animate' : '')} type={type} disabled={disable || false} onClick={onClick}>
+      <StyledButton className={`button ${classname}` + (animatedBtn ? ' on-animate' : '')} type={type} disabled={disable || false} onClick={onClick}>
         {content}
         {disable && (
           <div className='loading'>
@@ -30,7 +31,7 @@ const ButtonBlock: React.FC<IButton> = block(
   { as: 'button' },
 )
 
-const StyledButton = styled.button`
+const StyledButton: StyledComponent<'button', any, {}, never> = styled.button`
   cursor: pointer;
   padding: 17px 16px;
   position: relative;
@@ -46,6 +47,12 @@ const StyledButton = styled.button`
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   transition: 400ms;
+
+  &.not-full {
+    padding: 10px 20px;
+    width: max-content;
+    border-radius: 5px;
+  }
 
   .loading {
     position: absolute;

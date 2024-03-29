@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
-import { block } from 'million/react'
-import styled from 'styled-components'
+import { RefObject, useEffect, useRef, useState } from 'react'
+import styled, { StyledComponent } from 'styled-components'
+import { block, For } from 'million/react'
+import { v4 } from 'uuid'
 
 // Firebase
-import { collection, doc, getDocs, setDoc, deleteDoc } from 'firebase/firestore'
+import { collection, getDocs, addDoc } from 'firebase/firestore'
 import { db } from '../../firebase'
 
 // React Slick Carousel
@@ -12,6 +13,12 @@ import Slider from 'react-slick'
 // React Slick Carousel Styles
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+
+// Components
+import { Button } from 'components'
+
+// Types
+import { IClient } from 'types'
 
 // About Me text
 const shortText = `I was born in 2004 in Tashkent, Uzbekistan. I got into programming through my own interests. I enjoy working on more logically complex and interesting projects. My current goal is to
@@ -25,25 +32,23 @@ programming community.`
 
 const AboutBlock = block(
   function About() {
-    const [clients, setClients] = useState<any | null>(null)
+    const [clients, setClients] = useState<IClient[] | null>(null)
+    const [skills, setSkills] = useState<IClient[] | null>(null)
 
-    const sliderRef = useRef<Slider>(null)
-    const [currentSlide, setCurrentSlide] = useState<number>(0)
+    const sliderSkillsRef: RefObject<Slider> = useRef<Slider>(null)
+    const sliderClientsRef: RefObject<Slider> = useRef<Slider>(null)
 
     const sliderSettings = {
       dots: false,
       arrows: false,
       infinite: true,
       speed: 1500,
-      swipeToSlide: false,
+      swipeToSlide: true,
       slidesToShow: 4,
       slidesToScroll: 1,
-      adaptiveHeight: false,
+      adaptiveHeight: true,
       autoplay: true,
       autoplaySpeed: 2000,
-      beforeChange: (current: number, next: number) => {
-        setCurrentSlide(next)
-      },
       responsive: [
         {
           breakpoint: 1024,
@@ -80,15 +85,34 @@ const AboutBlock = block(
       setDisplayText(expanded ? shortText.substring(0, 550) + '...' : shortText)
     }
 
+    // Get Skills data
+    async function getSkills() {
+      let list: any = []
+
+      try {
+        const querySnapshot = await getDocs(collection(db, 'skills'))
+        querySnapshot.forEach((doc: any) => {
+          list.push(doc?.data())
+        })
+
+        setSkills(list)
+      } catch (error) {
+        console.log(error)
+      } finally {
+      }
+    }
+
     // Get Clients data
     async function getClients() {
       let list: any = []
 
       try {
-        const querySnapshot = await getDocs(collection(db, 'portfolio'))
+        const querySnapshot = await getDocs(collection(db, 'clients'))
         querySnapshot.forEach((doc: any) => {
-          list.push(doc._document)
+          console.log(doc?.data())
+          list.push(doc?.data())
         })
+
         setClients(list)
       } catch (error) {
         console.log(error)
@@ -96,52 +120,60 @@ const AboutBlock = block(
       }
     }
 
+    async function handleAdd() {
+      try {
+        const res = await addDoc(collection(db, 'clients'), {
+          id: v4(),
+          title: 'Flakon.uz',
+          image: 'https://firebasestorage.googleapis.com/v0/b/shomaqsudovuzdb.appspot.com/o/flakonuzlogo.png?alt=media&token=337eb589-e9c4-4115-b7cd-0f93251de661',
+        })
+
+        console.log(res)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
     useEffect(() => {
+      getSkills()
       getClients()
     }, [])
 
     return (
       <StyledAbout id='about'>
-        <div className='container full-h'>
+        <div className='container'>
           <main>
             {/* About block */}
             <div className='about'>
               <h2>About Me</h2>
               <p></p>
               <p>{displayText}</p>
-              <button className='learn-more-btn' onClick={toggleExpand}>
-                {expanded ? 'Show Less' : 'Learn More'}
-              </button>
+              <Button content={expanded ? 'Show Less' : 'Learn More'} classname='not-full' onClick={toggleExpand} />
             </div>
 
             {/* Skills block */}
             <div className='skills'>
               <h2>Skills</h2>
-              <ul>
-                <li>HTML &amp; CSS (including preprocessors like SASS)</li>
-                <li>JavaScript (frameworks like React, Vue.js, etc.)</li>
-                <li>Accessibility best practices</li>
-                <li>Responsive design principles</li>
-                <li>Experience with build tools and version control systems</li>
-              </ul>
+
+              <Slider ref={sliderSkillsRef} {...sliderSettings} className='clients_slider'>
+                {skills?.map((skill: IClient, index: number) => (
+                  <div className='client-slider' tabIndex={-1} key={skill?.id}>
+                    <div style={{ background: `url(${skill?.image})` }}></div>
+                  </div>
+                ))}
+              </Slider>
             </div>
 
             {/* Clients block */}
             <div className='cilents'>
               <h2>Happy Clients</h2>
 
-              <Slider ref={sliderRef} {...sliderSettings} className='clients_slider news_slider slick-dotted'>
-                {/* {clients?.map((client: string, index: number) => (
-                  <div
-                    className='news_item slick-slide client-slider'
-                    data-slick-index={index}
-                    aria-hidden={currentSlide === index ? false : true}
-                    tabIndex={-1}
-                    aria-describedby={`slick-slide0${index}`}
-                    key={client}>
-                    <div style={{ backgroundImage: `url(${getImageURL(client)})` }}></div>
+              <Slider ref={sliderClientsRef} {...sliderSettings} className='clients_slider'>
+                {clients?.map((client: IClient, index: number) => (
+                  <div className='client-slider' tabIndex={-1} key={client?.id}>
+                    <div style={{ background: `url(${client?.image})` }}></div>
                   </div>
-                ))} */}
+                ))}
               </Slider>
             </div>
           </main>
@@ -152,7 +184,7 @@ const AboutBlock = block(
   { as: 'section' },
 )
 
-const StyledAbout = styled.section`
+const StyledAbout: StyledComponent<'section', any, {}, never> = styled.section`
   .container > main {
     padding: 80px 0px;
     color: #fff;
@@ -165,18 +197,6 @@ const StyledAbout = styled.section`
         margin-top: 30px;
         font-size: 1rem;
         line-height: 2;
-      }
-
-      .learn-more-btn {
-        cursor: pointer;
-        padding: 10px 20px;
-        color: white;
-        border-radius: 5px;
-        background: transparent;
-        border: 2px solid #0059ff;
-      }
-
-      .learn-more-btn:hover {
       }
     }
 
@@ -209,6 +229,29 @@ const StyledAbout = styled.section`
 
       h2 {
         text-align: center;
+        margin-bottom: 26px;
+      }
+    }
+
+    .skills,
+    .clients {
+      .clients_slider {
+        .client-slider {
+          display: flex !important;
+          align-items: center !important;
+          gap: 140px !important;
+          padding: 0 20px !important;
+          width: 100% !important;
+          height: 120px !important;
+
+          div {
+            width: 100% !important;
+            height: 100% !important;
+            background-size: contain !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+          }
+        }
       }
     }
   }

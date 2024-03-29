@@ -1,5 +1,5 @@
 import { block } from 'million/react'
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 
 // React map Imports
 import { ComposableMap, Geographies, Geography, Marker, Annotation } from 'react-simple-maps'
@@ -56,7 +56,7 @@ const MapBlock = block(
   { as: 'div' },
 )
 
-const StyledMap = styled.div`
+const StyledMap: StyledComponent<'div', any, {}, never> = styled.div`
   position: absolute;
   top: -76px;
   right: -100px;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { block } from 'million/react'
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 
 // Interface
 interface IInput {
@@ -21,7 +21,7 @@ const InputBlock: React.FC<IInput> = block(function Input({ type, forID, isError
   )
 })
 
-const StyledInput = styled.input`
+const StyledInput: StyledComponent<'input', any, {}, never> = styled.input`
   padding: 15px 10px;
   margin-top: 4px;
   width: 100%;
@@ -46,7 +46,7 @@ const StyledInput = styled.input`
   }
 `
 
-const StyledTextarea = styled.textarea`
+const StyledTextarea: StyledComponent<'textarea', any, {}, never> = styled.textarea`
   padding: 15px 10px;
   margin-top: 4px;
   width: 100% !important;

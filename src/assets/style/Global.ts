@@ -1,7 +1,7 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, DefaultTheme, GlobalStyleComponent } from 'styled-components'
 
 import './fonts.css'
-export const GlobalStyles = createGlobalStyle`
+export const GlobalStyles: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
 * {
     margin: 0px;
     padding: 0px;
@@ -21,7 +21,6 @@ export const GlobalStyles = createGlobalStyle`
 
 body {
     height: 100%;
-    /* overflow: hidden; */
 
     background: #141E30; 
     background: -webkit-linear-gradient(to right, #243B55, #141E30); 

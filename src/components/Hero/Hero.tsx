@@ -1,5 +1,5 @@
 import { block } from 'million/react'
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 
 const HeroBlock = block(
   function Hero() {
@@ -23,7 +23,7 @@ const HeroBlock = block(
   { as: 'section' },
 )
 
-const StyledHero = styled.section`
+const StyledHero: StyledComponent<'section', any, {}, never> = styled.section`
   .container > main {
     height: 100dvh;
 
@@ -96,7 +96,7 @@ const StyledHero = styled.section`
 
     @media (max-width: 789px) {
       padding-top: 160px;
-      
+
       .image {
         margin-top: -140px;
       }

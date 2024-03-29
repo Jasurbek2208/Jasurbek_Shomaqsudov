@@ -1,13 +1,16 @@
 import { useRef, useEffect } from 'react'
 import { block } from 'million/react'
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 
 const MatrixLoaderBlock = block(
   function MatrixLoader(): JSX.Element {
     const canvasRef = useRef<HTMLCanvasElement>(null)
 
     useEffect(() => {
-      setTimeout(() => {
+      let animationFrame: NodeJS.Timeout
+      let resizeTimeout: NodeJS.Timeout
+
+      const initializeCanvas = () => {
         if (canvasRef.current) {
           const canvas = canvasRef.current
           const ctx = canvas.getContext('2d')
@@ -40,12 +43,28 @@ const MatrixLoaderBlock = block(
               }
             }
 
-            const animationFrame = setInterval(draw, 66)
+            draw()
 
-            return () => clearInterval(animationFrame)
+            animationFrame = setInterval(draw, 66)
           }
         }
-      }, 400)
+      }
+
+      const handleResize = () => {
+        clearTimeout(resizeTimeout)
+        resizeTimeout = setTimeout(() => {
+          initializeCanvas()
+        }, 400)
+      }
+
+      window.addEventListener('resize', handleResize)
+
+      initializeCanvas()
+
+      return () => {
+        clearInterval(animationFrame)
+        window.removeEventListener('resize', handleResize)
+      }
     }, [])
 
     return (
@@ -57,7 +76,7 @@ const MatrixLoaderBlock = block(
   { as: 'div' },
 )
 
-const StyledMatrixLoader = styled.div`
+const StyledMatrixLoader: StyledComponent<'div', any, {}, never> = styled.div`
   position: fixed;
   top: 0;
   left: 0;

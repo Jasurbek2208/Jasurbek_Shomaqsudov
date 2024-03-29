@@ -1,7 +1,7 @@
 import { block } from 'million/react'
 import React, { useState } from 'react'
 import axios from 'axios'
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 
 // Toast
 import toast from 'react-hot-toast'
@@ -181,10 +181,7 @@ const ContactBlock = block(
   { as: 'section' },
 )
 
-const StyledContact = styled.section`
-  /* scroll-snap-align: center;
-  height: 100dvh; */
-
+const StyledContact: StyledComponent<'section', any, {}, never> = styled.section`
   .container {
     position: relative;
     display: flex;

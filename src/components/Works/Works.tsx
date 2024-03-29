@@ -1,5 +1,5 @@
 import { block } from 'million/react'
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 
 const WorksBlock = block(
   function Works() {
@@ -12,9 +12,6 @@ const WorksBlock = block(
   { as: 'section' },
 )
 
-const StyledWorks = styled.section`
-  /* scroll-snap-align: center;
-  height: 100dvh; */
-`
+const StyledWorks: StyledComponent<'section', any, {}, never> = styled.section``
 
 export default WorksBlock
