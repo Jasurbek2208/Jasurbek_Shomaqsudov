@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useRef, useState } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { block, For } from 'million/react'
+import { block } from 'million/react'
 import { v4 } from 'uuid'
 
 // Firebase
@@ -41,7 +41,7 @@ const AboutBlock = block(
     const sliderSettings = {
       dots: false,
       arrows: false,
-      infinite: true,
+      infinite: !true,
       speed: 1500,
       swipeToSlide: true,
       slidesToShow: 4,
@@ -51,12 +51,6 @@ const AboutBlock = block(
       autoplaySpeed: 2000,
       responsive: [
         {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 4,
-          },
-        },
-        {
           breakpoint: 900,
           settings: {
             slidesToShow: 3,
@@ -64,12 +58,6 @@ const AboutBlock = block(
         },
         {
           breakpoint: 710,
-          settings: {
-            slidesToShow: 2,
-          },
-        },
-        {
-          breakpoint: 500,
           settings: {
             slidesToShow: 2,
           },
@@ -98,7 +86,6 @@ const AboutBlock = block(
         setSkills(list)
       } catch (error) {
         console.log(error)
-      } finally {
       }
     }
 
@@ -109,14 +96,12 @@ const AboutBlock = block(
       try {
         const querySnapshot = await getDocs(collection(db, 'clients'))
         querySnapshot.forEach((doc: any) => {
-          console.log(doc?.data())
           list.push(doc?.data())
         })
 
         setClients(list)
       } catch (error) {
         console.log(error)
-      } finally {
       }
     }
 
@@ -155,26 +140,30 @@ const AboutBlock = block(
             <div className='skills'>
               <h2>Skills</h2>
 
-              <Slider ref={sliderSkillsRef} {...sliderSettings} className='clients_slider'>
-                {skills?.map((skill: IClient, index: number) => (
-                  <div className='client-slider' tabIndex={-1} key={String(index)}>
-                    <div style={{ background: `url(${skill?.image})` }}></div>
-                  </div>
-                ))}
-              </Slider>
+              {skills && skills?.length > 0 && (
+                <Slider ref={sliderSkillsRef} {...sliderSettings} className='clients_slider'>
+                  {skills?.map((skill: IClient) => (
+                    <div className='client-slider' tabIndex={-1} key={skill?.id}>
+                      <div style={{ background: `url(${skill?.image})` }}></div>
+                    </div>
+                  ))}
+                </Slider>
+              )}
             </div>
 
             {/* Clients block */}
-            <div className='cilents'>
+            <div className='clients'>
               <h2>Happy Clients</h2>
 
-              <Slider ref={sliderClientsRef} {...sliderSettings} className='clients_slider'>
-                {clients?.map((client: IClient, index: number) => (
-                  <div className='client-slider' tabIndex={-1} key={client?.id}>
-                    <div style={{ background: `url(${client?.image})` }}></div>
-                  </div>
-                ))}
-              </Slider>
+              {clients && clients?.length > 0 && (
+                <Slider ref={sliderClientsRef} {...sliderSettings} className='clients_slider'>
+                  {clients?.map((client: IClient) => (
+                    <div className='client-slider' tabIndex={-1} key={client?.id}>
+                      <div style={{ background: `url(${client?.image})` }}></div>
+                    </div>
+                  ))}
+                </Slider>
+              )}
             </div>
           </main>
         </div>
@@ -201,10 +190,11 @@ const StyledAbout: StyledComponent<'section', any, {}, never> = styled.section`
     }
 
     .skills {
-      margin-top: 120px;
+      margin-top: 160px;
 
       h2 {
         text-align: center;
+        margin-bottom: 30px;
       }
 
       ul {
@@ -224,12 +214,12 @@ const StyledAbout: StyledComponent<'section', any, {}, never> = styled.section`
       }
     }
 
-    .cilents {
-      margin-top: 120px;
+    .clients {
+      margin-top: 160px;
 
       h2 {
         text-align: center;
-        margin-bottom: 26px;
+        margin-bottom: 30px;
       }
     }
 
@@ -237,10 +227,7 @@ const StyledAbout: StyledComponent<'section', any, {}, never> = styled.section`
     .clients {
       .clients_slider {
         .client-slider {
-          display: flex !important;
-          align-items: center !important;
-          gap: 140px !important;
-          padding: 0 20px !important;
+          padding: 0 54px !important;
           width: 100% !important;
           height: 120px !important;
 

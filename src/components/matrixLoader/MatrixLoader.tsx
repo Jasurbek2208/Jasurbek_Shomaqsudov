@@ -5,6 +5,7 @@ import styled, { StyledComponent } from 'styled-components'
 const MatrixLoaderBlock = block(
   function MatrixLoader(): JSX.Element {
     const canvasRef = useRef<HTMLCanvasElement>(null)
+    let prevWidth = window.innerWidth
 
     useEffect(() => {
       let animationFrame: NodeJS.Timeout
@@ -53,7 +54,10 @@ const MatrixLoaderBlock = block(
       const handleResize = () => {
         clearTimeout(resizeTimeout)
         resizeTimeout = setTimeout(() => {
-          initializeCanvas()
+          if (window.innerWidth !== prevWidth) {
+            prevWidth = window.innerWidth
+            initializeCanvas()
+          }
         }, 400)
       }
 
