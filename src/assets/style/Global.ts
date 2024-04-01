@@ -26,4 +26,14 @@ body {
     background: -webkit-linear-gradient(to right, #243B55, #141E30); 
     background: linear-gradient(to right, #243B55, #141E30); 
 }
+
+body > h1.hidden-h1-forever {
+  margin: 0px !important;
+  padding: 0px !important;
+  display: none !important;
+  font-size: 0px !important;
+  font-weight: 100 !important;
+  overflow: hidden !important;
+  transform: scale(0) !important;
+}
 `
