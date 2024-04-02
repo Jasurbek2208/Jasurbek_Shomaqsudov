@@ -2,6 +2,9 @@ import { block } from 'million/react'
 import { BrowserRouter } from 'react-router-dom'
 import styled, { StyledComponent } from 'styled-components'
 
+// Smooth Scrollbar
+import { Scrollbar } from 'smooth-scrollbar-react'
+
 // Toast
 import { Toaster } from 'react-hot-toast'
 
@@ -15,16 +18,24 @@ const AppBlock = block(
   function App(): JSX.Element {
     return (
       <StyledApp>
+        <MatrixLoader />
+        <GlobalStyles />
+        <Toaster />
         <BrowserRouter>
-          <MatrixLoader />
-          <GlobalStyles />
-          <Toaster />
-          <Navbar />
-          <Hero />
-          <About />
-          <Works />
-          <Contact />
-          <Footer />
+          <Scrollbar
+            alwaysShowTracks
+            plugins={{
+              overScroll: {
+                effect: 'bounce',
+              } as any,
+            }}>
+            <Navbar />
+            <Hero />
+            <About />
+            <Works />
+            <Contact />
+            <Footer />
+          </Scrollbar>
         </BrowserRouter>
       </StyledApp>
     )

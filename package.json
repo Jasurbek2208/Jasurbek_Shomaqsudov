@@ -201,6 +201,8 @@
     "react-simple-maps": "^3.0.0",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
+    "smooth-scrollbar": "^8.8.4",
+    "smooth-scrollbar-react": "^2.4.1",
     "styled-components": "^5.3.10",
     "uuid": "^9.0.1"
   },
