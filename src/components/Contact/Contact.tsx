@@ -72,10 +72,10 @@ const ContactBlock = block(
         }))
 
         isNotValid = true
-      } else if (message.trim().length < 24) {
+      } else if (message.trim().length < 5) {
         setError((p) => ({
           ...p,
-          message: [true, 'You wrote a very short message. The message must be at least 24 characters long.'],
+          message: [true, 'You wrote a very short message. The message must be at least 5 characters long.'],
         }))
 
         isNotValid = true

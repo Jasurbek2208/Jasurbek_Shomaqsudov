@@ -1,4 +1,5 @@
 import { block } from 'million/react'
+import { BrowserRouter } from 'react-router-dom'
 import styled, { StyledComponent } from 'styled-components'
 
 // Toast
@@ -12,17 +13,18 @@ import { Contact, Hero, Navbar, About, Works, MatrixLoader } from 'components'
 
 const AppBlock = block(
   function App(): JSX.Element {
-
     return (
       <StyledApp>
-        <MatrixLoader />
-        <GlobalStyles />
-        <Toaster />
-        <Navbar />
-        <Hero />
-        <About />
-        <Works />
-        <Contact />
+        <BrowserRouter>
+          <MatrixLoader />
+          <GlobalStyles />
+          <Toaster />
+          <Navbar />
+          <Hero />
+          <About />
+          <Works />
+          <Contact />
+        </BrowserRouter>
       </StyledApp>
     )
   },

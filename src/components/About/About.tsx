@@ -140,7 +140,7 @@ const AboutBlock = block(
             <div className='skills'>
               <h2>Skills</h2>
 
-              {/* {skills && skills?.length > 0 && (
+              {skills && skills?.length > 0 && (
                 <Slider ref={sliderSkillsRef} {...sliderSettings} className='clients_slider'>
                   {skills?.map((skill: IClient) => (
                     <div className='client-slider' tabIndex={-1} key={skill?.id}>
@@ -148,7 +148,7 @@ const AboutBlock = block(
                     </div>
                   ))}
                 </Slider>
-              )} */}
+              )}
             </div>
 
             {/* Clients block */}
@@ -159,7 +159,9 @@ const AboutBlock = block(
                 <Slider ref={sliderClientsRef} {...sliderSettings} className='clients_slider'>
                   {clients?.map((client: IClient) => (
                     <div className='client-slider' tabIndex={-1} key={client?.id}>
-                      <div style={{ background: `url(${client?.image})` }}></div>
+                      <a href={client?.link} target='_blank' rel='noopener noreferrer'>
+                        <div style={{ background: `url(${client?.image})` }}></div>
+                      </a>
                     </div>
                   ))}
                 </Slider>

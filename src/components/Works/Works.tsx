@@ -79,7 +79,9 @@ const WorksBlock = block(
               <Slider ref={sliderWorksRef} {...sliderSettings} className='clients_slider'>
                 {data?.map((item: IWorks) => (
                   <div className='client-slider' tabIndex={-1} key={item?.id}>
-                    <div style={{ background: `url(${item?.image})` }}></div>
+                    <a href={item?.link} target='_blank' rel='noopener noreferrer'>
+                      <div style={{ background: `url(${item?.image})` }}></div>
+                    </a>
                   </div>
                 ))}
               </Slider>
