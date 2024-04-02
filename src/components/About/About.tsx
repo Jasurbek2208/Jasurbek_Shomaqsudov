@@ -140,7 +140,7 @@ const AboutBlock = block(
             <div className='skills'>
               <h2>Skills</h2>
 
-              {skills && skills?.length > 0 && (
+              {/* {skills && skills?.length > 0 && (
                 <Slider ref={sliderSkillsRef} {...sliderSettings} className='clients_slider'>
                   {skills?.map((skill: IClient) => (
                     <div className='client-slider' tabIndex={-1} key={skill?.id}>
@@ -148,7 +148,7 @@ const AboutBlock = block(
                     </div>
                   ))}
                 </Slider>
-              )}
+              )} */}
             </div>
 
             {/* Clients block */}
@@ -174,6 +174,8 @@ const AboutBlock = block(
 )
 
 const StyledAbout: StyledComponent<'section', any, {}, never> = styled.section`
+  scroll-snap-align: center;
+
   .container > main {
     padding: 80px 0px;
     color: #fff;
@@ -227,7 +229,7 @@ const StyledAbout: StyledComponent<'section', any, {}, never> = styled.section`
     .clients {
       .clients_slider {
         .client-slider {
-          padding: 0 54px !important;
+          padding: 0 28px !important;
           width: 100% !important;
           height: 120px !important;
 

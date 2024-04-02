@@ -1,10 +1,5 @@
-import { useRef } from 'react'
 import { block } from 'million/react'
 import styled, { StyledComponent } from 'styled-components'
-
-// Smooth Scrollbar
-import { Scrollbar } from 'smooth-scrollbar-react'
-import type { Scrollbar as BaseScrollbar } from 'smooth-scrollbar/scrollbar'
 
 // Toast
 import { Toaster } from 'react-hot-toast'
@@ -17,26 +12,17 @@ import { Contact, Hero, Navbar, About, Works, MatrixLoader } from 'components'
 
 const AppBlock = block(
   function App(): JSX.Element {
-    const scrollbar = useRef<BaseScrollbar | null>(null)
 
     return (
       <StyledApp>
         <MatrixLoader />
         <GlobalStyles />
         <Toaster />
-        <Scrollbar
-          ref={scrollbar}
-          plugins={{
-            overScroll: {
-              effect: 'bounce',
-            } as any,
-          }}>
-          <Navbar />
-          <Hero />
-          <About />
-          <Works />
-          <Contact />
-        </Scrollbar>
+        <Navbar />
+        <Hero />
+        <About />
+        <Works />
+        <Contact />
       </StyledApp>
     )
   },

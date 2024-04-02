@@ -1,5 +1,5 @@
 import { block } from 'million/react'
-import { useEffect, useState } from 'react'
+import { MouseEvent, useEffect, useState } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
 // Components
@@ -10,6 +10,14 @@ const NavbarBlock = block(
     const [menuOpen, setMenuOpen] = useState<Boolean>(false)
     const [navItems, setNavItems] = useState<Boolean>(false)
     const [renderCount, setRenderCount] = useState<number>(0)
+
+    const scrollToAnchor = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
+      // e?.preventDefault()
+      const element = document?.getElementById(id)
+
+      if (element) element?.scrollIntoView({ behavior: 'smooth' })
+      setMenuOpen((p) => !p)
+    }
 
     useEffect(() => {
       setRenderCount((p: number) => ++p)
@@ -29,22 +37,22 @@ const NavbarBlock = block(
           <div className={'nav' + (menuOpen ? ' open' : navItems ? ' close' : '')}>
             <ul>
               <li>
-                <a href='#hero' onClick={() => setMenuOpen((p) => !p)}>
+                <a href='#hero' onClick={(e: MouseEvent<HTMLAnchorElement>) => scrollToAnchor(e, 'hero')}>
                   Home
                 </a>
               </li>
               <li>
-                <a href='#about' onClick={() => setMenuOpen((p) => !p)}>
+                <a href='#about' onClick={(e: MouseEvent<HTMLAnchorElement>) => scrollToAnchor(e, 'about')}>
                   About
                 </a>
               </li>
               <li>
-                <a href='#works' onClick={() => setMenuOpen((p) => !p)}>
+                <a href='#works' onClick={(e: MouseEvent<HTMLAnchorElement>) => scrollToAnchor(e, 'works')}>
                   Works
                 </a>
               </li>
               <li>
-                <a href='#contact' onClick={() => setMenuOpen((p) => !p)}>
+                <a href='#contact' onClick={(e: MouseEvent<HTMLAnchorElement>) => scrollToAnchor(e, 'contact')}>
                   Contact
                 </a>
               </li>
