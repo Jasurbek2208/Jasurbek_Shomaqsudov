@@ -8,13 +8,14 @@ const MapBlock = block(
   function Map(): JSX.Element {
     return (
       <StyledMap>
-        <ComposableMap>
-          <Geographies geography='/features.json'>
+        <ComposableMap focusable={false}>
+          <Geographies focusable={false} geography='/features.json'>
             {({ geographies }) =>
               geographies?.map((item: any, index: number) => (
                 <Geography
                   key={item?.rsmKey || String(index)}
                   geography={item}
+                  focusable={false}
                   strokeWidth={0.5}
                   style={{
                     default: {
@@ -33,13 +34,14 @@ const MapBlock = block(
               ))
             }
           </Geographies>
-          <Marker coordinates={[69.27782177925111, 41.35158489075851]}>
+          <Marker focusable={false} coordinates={[69.27782177925111, 41.35158489075851]}>
             <circle r={2} fill='#F53' />
           </Marker>
           <Annotation
             subject={[69.27782177925111, 41.35158489075851]}
             dx={-40}
             dy={-10}
+            focusable={false}
             connectorProps={{
               stroke: '#FF5533',
               strokeWidth: 1,
