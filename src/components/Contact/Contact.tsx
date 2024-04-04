@@ -6,7 +6,7 @@ import styled, { StyledComponent } from 'styled-components'
 import toast from 'react-hot-toast'
 
 // Components
-import { Input, Map, Button } from 'components'
+import { Input, Button } from 'components'
 
 // Types
 type Error = [boolean, string]
@@ -169,9 +169,6 @@ export default function Contact(): JSX.Element {
         </form>
 
         {/* Map */}
-        <div className='map'>
-          <Map />
-        </div>
       </div>
     </StyledContact>
   )
