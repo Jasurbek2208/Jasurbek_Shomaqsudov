@@ -15,7 +15,7 @@ const AppBlock = block(
   function App(): JSX.Element {
     return (
       <StyledApp>
-        <MatrixLoader />
+        // <MatrixLoader />
         <GlobalStyles />
         <Toaster />
         <BrowserRouter>
