@@ -1,4 +1,3 @@
-import { block } from 'million/react'
 import React, { useState } from 'react'
 import axios from 'axios'
 import styled, { StyledComponent } from 'styled-components'
@@ -13,173 +12,170 @@ import { Input, Map, Button } from 'components'
 type Error = [boolean, string]
 type ErrorState = { name: Error; phone: Error; message: Error }
 
-const ContactBlock = block(
-  function Contact(): JSX.Element {
-    const [btnDisable, setBtnDisable] = useState<boolean>(false)
-    const [error, setError] = useState<ErrorState>({
-      name: [false, ''],
-      phone: [false, ''],
-      message: [false, ''],
-    })
+export default function Contact(): JSX.Element {
+  const [btnDisable, setBtnDisable] = useState<boolean>(false)
+  const [error, setError] = useState<ErrorState>({
+    name: [false, ''],
+    phone: [false, ''],
+    message: [false, ''],
+  })
 
-    function changeInputs(name: string): void {
-      setError((p) => ({ ...p, [name]: [false, ''] }))
+  function changeInputs(name: string): void {
+    setError((p) => ({ ...p, [name]: [false, ''] }))
+  }
+
+  // Form data checking validation
+  function checkValidate(name: string, phone: string, message: string): boolean {
+    let isNotValid: boolean = false
+
+    // Checking name
+    if (!name.trim().length) {
+      setError((p) => ({
+        ...p,
+        name: [true, 'Name is required!'],
+      }))
+
+      isNotValid = true
+    } else if (name.trim().length < 7) {
+      setError((p) => ({
+        ...p,
+        name: [true, 'Name is too short, enter at least 7 characters.'],
+      }))
+
+      isNotValid = true
+    } else if (name.trim().length > 55) {
+      setError((p) => ({
+        ...p,
+        name: [true, 'You can enter a maximum of 55 characters.'],
+      }))
+
+      isNotValid = true
     }
 
-    // Form data checking validation
-    function checkValidate(name: string, phone: string, message: string): Boolean {
-      let isNotValid: Boolean = false
+    // Checking phone
+    if (!phone.trim().length) {
+      setError((p) => ({
+        ...p,
+        phone: [true, 'Phone is required!'],
+      }))
 
-      // Checking name
-      if (!name.trim().length) {
-        setError((p) => ({
-          ...p,
-          name: [true, 'Name is required!'],
-        }))
-
-        isNotValid = true
-      } else if (name.trim().length < 7) {
-        setError((p) => ({
-          ...p,
-          name: [true, 'Name is too short, enter at least 7 characters.'],
-        }))
-
-        isNotValid = true
-      } else if (name.trim().length > 55) {
-        setError((p) => ({
-          ...p,
-          name: [true, 'You can enter a maximum of 55 characters.'],
-        }))
-
-        isNotValid = true
-      }
-
-      // Checking phone
-      if (!phone.trim().length) {
-        setError((p) => ({
-          ...p,
-          phone: [true, 'Phone is required!'],
-        }))
-
-        isNotValid = true
-      }
-
-      // Checking message
-      if (!message.trim().length) {
-        setError((p) => ({
-          ...p,
-          message: [true, 'Message is required!'],
-        }))
-
-        isNotValid = true
-      } else if (message.trim().length < 5) {
-        setError((p) => ({
-          ...p,
-          message: [true, 'You wrote a very short message. The message must be at least 5 characters long.'],
-        }))
-
-        isNotValid = true
-      } else if (message.trim().length > 1200) {
-        setError((p) => ({
-          ...p,
-          message: [true, 'You wrote a very long message. The message should be no more than 1200 characters long.'],
-        }))
-
-        isNotValid = true
-      }
-
-      return isNotValid
+      isNotValid = true
     }
 
-    async function handleSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
-      e.preventDefault()
+    // Checking message
+    if (!message.trim().length) {
+      setError((p) => ({
+        ...p,
+        message: [true, 'Message is required!'],
+      }))
 
-      const API_URL = `https://api.telegram.org/bot${import.meta.env.VITE_TELEGRAM_BOT_TOKEN}/sendMessage`
+      isNotValid = true
+    } else if (message.trim().length < 5) {
+      setError((p) => ({
+        ...p,
+        message: [true, 'You wrote a very short message. The message must be at least 5 characters long.'],
+      }))
 
-      let name: string = (e.currentTarget[0] as HTMLInputElement).value
-      let phone: string = (e.currentTarget[1] as HTMLInputElement).value
-      let message: string = (e.currentTarget[2] as HTMLInputElement).value
+      isNotValid = true
+    } else if (message.trim().length > 1200) {
+      setError((p) => ({
+        ...p,
+        message: [true, 'You wrote a very long message. The message should be no more than 1200 characters long.'],
+      }))
 
-      if (checkValidate(name, phone, message)) return
-      setBtnDisable(true)
-      let text: String = `<b>Ismi:</b> ${name} \n\n<b>Telefon raqami:</b> ${phone} \n\n<b>Xabar:</b> ${message}`
+      isNotValid = true
+    }
 
-      try {
-        await axios.post(
-          API_URL,
-          {
-            chat_id: import.meta.env.VITE_TELEGRAM_CHAT_ID,
-            parse_mode: 'html',
-            text,
+    return isNotValid
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
+    e.preventDefault()
+
+    const API_URL = `https://api.telegram.org/bot${import.meta.env.VITE_TELEGRAM_BOT_TOKEN}/sendMessage`
+
+    let name: string = (e.currentTarget[0] as HTMLInputElement).value
+    let phone: string = (e.currentTarget[1] as HTMLInputElement).value
+    let message: string = (e.currentTarget[2] as HTMLInputElement).value
+
+    if (checkValidate(name, phone, message)) return
+    setBtnDisable(true)
+    let text: String = `<b>Ismi:</b> ${name} \n\n<b>Telefon raqami:</b> ${phone} \n\n<b>Xabar:</b> ${message}`
+
+    try {
+      await axios.post(
+        API_URL,
+        {
+          chat_id: import.meta.env.VITE_TELEGRAM_CHAT_ID,
+          parse_mode: 'html',
+          text,
+        },
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
           },
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          },
-        )
-        ;(e.target as HTMLFormElement).reset()
-        toast.success('Message sent successfully!')
-      } catch {
-        toast.error('There was a problem sending the message. Please try again!')
-      } finally {
-        setBtnDisable(false)
-      }
+        },
+      )
+      ;(e.target as HTMLFormElement).reset()
+      toast.success('Message sent successfully!')
+    } catch {
+      toast.error('There was a problem sending the message. Please try again!')
+    } finally {
+      setBtnDisable(false)
     }
+  }
 
-    return (
-      <StyledContact id='contact'>
-        <div className='container full-h'>
-          <form onSubmit={handleSubmit}>
-            <div className='input'>
-              <label htmlFor='fullname'>F.I.O.:</label>
-              <Input type='text' forID='fullname' isError={error.name[0]} placeholder='Write your fullname' onChange={() => changeInputs('name')} />
+  return (
+    <StyledContact id='contact'>
+      <div className='container full-h'>
+        <form onSubmit={handleSubmit}>
+          <div className='input'>
+            <label htmlFor='fullname'>F.I.O.:</label>
+            <Input type='text' forID='fullname' isError={error.name[0]} placeholder='Write your fullname' onChange={() => changeInputs('name')} />
 
-              {error.name[0] && <span className='error-message'>{error.name[1]}</span>}
-            </div>
-            <div className='input'>
-              <label htmlFor='tel'>Phone:</label>
-              <Input
-                type='tel'
-                forID='tel'
-                isError={error.phone[0]}
-                placeholder='Write your phone number'
-                pattern='[+]{1}[0-9]{3}[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}'
-                onChange={(e) => {
-                  changeInputs('phone')
-                  e.target.setCustomValidity('')
-
-                  if (!e.target.validity.valid) {
-                    e.target.setCustomValidity('The number was entered incorrectly ! Example: +998971050505')
-                  }
-                }}
-              />
-
-              {error.phone[0] && <span className='error-message'>{error.phone[1]}</span>}
-            </div>
-
-            <div className='input'>
-              <label htmlFor='message'>Message:</label>
-              <Input type='textarea' forID='message' isError={error.message[0]} placeholder='Write your short message' onChangeArea={() => changeInputs('message')} />
-
-              {error.message[0] && <span className={'error-message' + (error.message[1].trim().length >= 24 ? ' long' : '')}>{error.message[1]}</span>}
-            </div>
-
-            <div className='input'>
-              <Button type='submit' content='Send message' disable={btnDisable} animatedBtn={false} />
-            </div>
-          </form>
-
-          {/* Map */}
-          <div className='map'>
-            <Map />
+            {error.name[0] && <span className='error-message'>{error.name[1]}</span>}
           </div>
+          <div className='input'>
+            <label htmlFor='tel'>Phone:</label>
+            <Input
+              type='tel'
+              forID='tel'
+              isError={error.phone[0]}
+              placeholder='Write your phone number'
+              pattern='[+]{1}[0-9]{3}[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}'
+              onChange={(e) => {
+                changeInputs('phone')
+                e.target.setCustomValidity('')
+
+                if (!e.target.validity.valid) {
+                  e.target.setCustomValidity('The number was entered incorrectly ! Example: +998971050505')
+                }
+              }}
+            />
+
+            {error.phone[0] && <span className='error-message'>{error.phone[1]}</span>}
+          </div>
+
+          <div className='input'>
+            <label htmlFor='message'>Message:</label>
+            <Input type='textarea' forID='message' isError={error.message[0]} placeholder='Write your short message' onChangeArea={() => changeInputs('message')} />
+
+            {error.message[0] && <span className={'error-message' + (error.message[1].trim().length >= 24 ? ' long' : '')}>{error.message[1]}</span>}
+          </div>
+
+          <div className='input'>
+            <Button type='submit' content='Send message' disable={btnDisable} animatedBtn={false} />
+          </div>
+        </form>
+
+        {/* Map */}
+        <div className='map'>
+          <Map />
         </div>
-      </StyledContact>
-    )
-  },
-  { as: 'section' },
-)
+      </div>
+    </StyledContact>
+  )
+}
 
 const StyledContact: StyledComponent<'section', any, {}, never> = styled.section`
   .container {
@@ -241,5 +237,3 @@ const StyledContact: StyledComponent<'section', any, {}, never> = styled.section
     }
   }
 `
-
-export default ContactBlock

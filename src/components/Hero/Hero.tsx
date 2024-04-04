@@ -1,27 +1,23 @@
-import { block } from 'million/react'
 import styled, { StyledComponent } from 'styled-components'
 
-const HeroBlock = block(
-  function Hero() {
-    return (
-      <StyledHero id='hero'>
-        <div className='container full-h'>
-          <main>
-            <div className='description'>
-              <h1>Jasurbek Shomaqsudov</h1>
-              <h4>Frontend developer</h4>
-              <p>Check out the site to learn more about me.</p>
-            </div>
-            <div className='image'>
-              <img src='illustrators/developer.webp' alt='frontend developer illustrator' />
-            </div>
-          </main>
-        </div>
-      </StyledHero>
-    )
-  },
-  { as: 'section' },
-)
+export default function Hero() {
+  return (
+    <StyledHero id='hero'>
+      <div className='container full-h'>
+        <main>
+          <div className='description'>
+            <h1>Jasurbek Shomaqsudov</h1>
+            <h4>Frontend developer</h4>
+            <p>Check out the site to learn more about me.</p>
+          </div>
+          <div className='image'>
+            <img src='illustrators/developer.webp' alt='frontend developer illustrator' decoding='async' loading='lazy' />
+          </div>
+        </main>
+      </div>
+    </StyledHero>
+  )
+}
 
 const StyledHero: StyledComponent<'section', any, {}, never> = styled.section`
   .container > main {
@@ -41,17 +37,20 @@ const StyledHero: StyledComponent<'section', any, {}, never> = styled.section`
       h1 {
         font-size: 2.9rem;
         animation: fadeIn 500ms ease-in-out;
+        will-change: margin-left, opacity;
       }
 
       h4 {
         margin: 14px 0px;
         font-size: 1.5rem;
         animation: fadeIn 600ms ease-in-out;
+        will-change: margin-left, opacity;
       }
 
       p {
         font-size: 1rem;
         animation: fadeIn 1s ease-in-out;
+        will-change: margin-left, opacity;
       }
     }
 
@@ -60,11 +59,13 @@ const StyledHero: StyledComponent<'section', any, {}, never> = styled.section`
       height: 420px;
       position: relative;
       animation: fadeIn 1s ease-in-out;
+      will-change: margin-left, opacity;
 
       img {
         width: 100%;
         position: absolute;
         animation: illustratorAnimation 8s infinite;
+        will-change: transform;
         z-index: 1;
       }
     }
@@ -129,5 +130,3 @@ const StyledHero: StyledComponent<'section', any, {}, never> = styled.section`
     }
   }
 `
-
-export default HeroBlock

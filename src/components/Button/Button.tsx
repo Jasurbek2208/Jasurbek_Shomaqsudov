@@ -1,5 +1,4 @@
 import React from 'react'
-import { block } from 'million/react'
 import styled, { StyledComponent } from 'styled-components'
 
 // Components
@@ -15,21 +14,18 @@ interface IButton {
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 }
 
-const ButtonBlock: React.FC<IButton> = block(
-  function Button({ content, type = 'button', disable, animatedBtn = false, classname = '', onClick }: IButton): JSX.Element {
-    return (
-      <StyledButton className={`button ${classname}` + (animatedBtn ? ' on-animate' : '')} type={type} disabled={disable || false} onClick={onClick}>
-        {content}
-        {disable && (
-          <div className='loading'>
-            <Loading />
-          </div>
-        )}
-      </StyledButton>
-    )
-  },
-  { as: 'button' },
-)
+export default function Button({ content, type = 'button', disable, animatedBtn = false, classname = '', onClick }: IButton): JSX.Element {
+  return (
+    <StyledButton className={`button ${classname}` + (animatedBtn ? ' on-animate' : '')} type={type} disabled={disable || false} onClick={onClick}>
+      {content}
+      {disable && (
+        <div className='loading'>
+          <Loading />
+        </div>
+      )}
+    </StyledButton>
+  )
+}
 
 const StyledButton: StyledComponent<'button', any, {}, never> = styled.button`
   cursor: pointer;
@@ -108,5 +104,3 @@ const StyledButton: StyledComponent<'button', any, {}, never> = styled.button`
     }
   }
 `
-
-export default ButtonBlock

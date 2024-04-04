@@ -1,25 +1,24 @@
 import React from 'react'
-import { block } from 'million/react'
 import styled, { StyledComponent } from 'styled-components'
 
 // Interface
 interface IInput {
   type: string
   forID: string
-  isError: Boolean
+  isError: boolean
   placeholder: string
   pattern?: string
   onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined
   onChangeArea?: React.ChangeEventHandler<HTMLTextAreaElement> | undefined
 }
 
-const InputBlock: React.FC<IInput> = block(function Input({ type, forID, isError, placeholder, pattern, onChange, onChangeArea }: IInput): JSX.Element {
+export default function Input({ type, forID, isError, placeholder, pattern, onChange, onChangeArea }: IInput): JSX.Element {
   return type !== 'textarea' ? (
     <StyledInput type={type} id={forID} className={'input' + (isError ? ' error-border' : '')} placeholder={placeholder} pattern={pattern} onChange={onChange} />
   ) : (
     <StyledTextarea id={forID} className={'input' + (isError ? ' error-border' : '')} placeholder={placeholder} onChange={onChangeArea} />
   )
-})
+}
 
 const StyledInput: StyledComponent<'input', any, {}, never> = styled.input`
   padding: 15px 10px;
@@ -74,5 +73,3 @@ const StyledTextarea: StyledComponent<'textarea', any, {}, never> = styled.texta
     box-shadow: 0 4px 30px rgba(255, 0, 0, 0.1);
   }
 `
-
-export default InputBlock

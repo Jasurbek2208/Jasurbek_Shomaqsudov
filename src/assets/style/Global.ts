@@ -9,8 +9,8 @@ export const GlobalStyles: GlobalStyleComponent<{}, DefaultTheme> = createGlobal
   font-family: 'Roboto', sans-serif;
 }
 .container { 
-  padding: 0px 16px;
   margin: 0 auto; 
+  padding: 0px 16px;
   max-width: 1200px;
 }
 .full-h {
@@ -18,9 +18,12 @@ export const GlobalStyles: GlobalStyleComponent<{}, DefaultTheme> = createGlobal
 }
 body {
   height: 100%;
-  background: #141E30; 
-  background: -webkit-linear-gradient(to right, #243B55, #141E30); 
-  background: linear-gradient(to right, #243B55, #141E30); 
+  min-height: 100dvh;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 body > h1.hidden-h1-forever {
   margin: 0px !important;

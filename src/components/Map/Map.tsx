@@ -1,62 +1,58 @@
-import { block } from 'million/react'
 import styled, { StyledComponent } from 'styled-components'
 
 // React map Imports
 import { ComposableMap, Geographies, Geography, Marker, Annotation } from 'react-simple-maps'
 
-const MapBlock = block(
-  function Map(): JSX.Element {
-    return (
-      <StyledMap>
-        <ComposableMap focusable={false}>
-          <Geographies focusable={false} geography='/features.json'>
-            {({ geographies }) =>
-              geographies?.map((item: any, index: number) => (
-                <Geography
-                  key={item?.rsmKey || String(index)}
-                  geography={item}
-                  focusable={false}
-                  strokeWidth={0.5}
-                  style={{
-                    default: {
-                      fill: item.id === 'UZB' ? '#E42' : 'transparent',
-                      stroke: '#000000',
-                    },
-                    hover: {
-                      fill: 'transparent',
-                      stroke: '#000000',
-                    },
-                    pressed: {
-                      fill: '#E42',
-                    },
-                  }}
-                />
-              ))
-            }
-          </Geographies>
-          <Marker focusable={false} coordinates={[69.27782177925111, 41.35158489075851]}>
-            <circle r={2} fill='#F53' />
-          </Marker>
-          <Annotation
-            subject={[69.27782177925111, 41.35158489075851]}
-            dx={-40}
-            dy={-10}
-            focusable={false}
-            connectorProps={{
-              stroke: '#FF5533',
-              strokeWidth: 1,
-              strokeLinecap: 'round',
-            }}>
-            <text fontSize={9} fontWeight={600} x='-3' textAnchor='end' alignmentBaseline='middle' fill='#F53'>
-              {'Tashkent, Uzbekistan'}
-            </text>
-          </Annotation>
-        </ComposableMap>
-      </StyledMap>
-    )
-  },
-  { as: 'div' },
-)
+export default function Map(): JSX.Element {
+  return (
+    <StyledMap>
+      <ComposableMap focusable={false}>
+        <Geographies focusable={false} geography='/features.json'>
+          {({ geographies }) =>
+            geographies?.map((item: any, index: number) => (
+              <Geography
+                key={item?.rsmKey || String(index)}
+                geography={item}
+                focusable={false}
+                strokeWidth={0.5}
+                style={{
+                  default: {
+                    fill: item.id === 'UZB' ? '#E42' : 'transparent',
+                    stroke: '#000000',
+                  },
+                  hover: {
+                    fill: 'transparent',
+                    stroke: '#000000',
+                  },
+                  pressed: {
+                    fill: '#E42',
+                  },
+                }}
+              />
+            ))
+          }
+        </Geographies>
+        <Marker focusable={false} coordinates={[69.27782177925111, 41.35158489075851]}>
+          <circle r={2} fill='#F53' />
+        </Marker>
+        <Annotation
+          subject={[69.27782177925111, 41.35158489075851]}
+          dx={-40}
+          dy={-10}
+          focusable={false}
+          connectorProps={{
+            stroke: '#FF5533',
+            strokeWidth: 1,
+            strokeLinecap: 'round',
+          }}>
+          <text fontSize={9} fontWeight={600} x='-3' textAnchor='end' alignmentBaseline='middle' fill='#F53'>
+            {'Tashkent, Uzbekistan'}
+          </text>
+        </Annotation>
+      </ComposableMap>
+    </StyledMap>
+  )
+}
 
 const StyledMap: StyledComponent<'div', any, {}, never> = styled.div`
   position: absolute;
@@ -102,5 +98,3 @@ const StyledMap: StyledComponent<'div', any, {}, never> = styled.div`
     right: -640px;
   }
 `
-
-export default MapBlock

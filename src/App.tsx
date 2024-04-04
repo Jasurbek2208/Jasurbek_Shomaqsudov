@@ -2,9 +2,6 @@ import { block } from 'million/react'
 import { BrowserRouter } from 'react-router-dom'
 import styled, { StyledComponent } from 'styled-components'
 
-// Smooth Scrollbar
-import { Scrollbar } from 'smooth-scrollbar-react'
-
 // Toast
 import { Toaster } from 'react-hot-toast'
 
@@ -22,20 +19,12 @@ const AppBlock = block(
         <GlobalStyles />
         <Toaster />
         <BrowserRouter>
-          <Scrollbar
-            alwaysShowTracks
-            plugins={{
-              overScroll: {
-                effect: 'bounce',
-              } as any,
-            }}>
-            <Navbar />
-            <Hero />
-            <About />
-            <Works />
-            <Contact />
-            <Footer />
-          </Scrollbar>
+          <Navbar />
+          <Hero />
+          <About />
+          <Works />
+          <Contact />
+          <Footer />
         </BrowserRouter>
       </StyledApp>
     )
@@ -44,15 +33,6 @@ const AppBlock = block(
 )
 
 const StyledApp: StyledComponent<'div', any, {}, never> = styled.div`
-  height: 100%;
-  min-height: 100dvh;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-
   background: #141e30c0;
   background: -webkit-linear-gradient(to right, #243b55ab, #141e30ab);
   background: linear-gradient(to right, #243b55ab, #141e30ab);

@@ -1,6 +1,5 @@
-import { block } from 'million/react'
 import styled, { StyledComponent } from 'styled-components'
-const LoadingBlock: React.FC = block(() => <StyledLoading />)
+export default () => <StyledLoading />
 
 const StyledLoading: StyledComponent<'div', any, {}, never> = styled.div`
   border: 4px solid #f3f3f3;
@@ -30,5 +29,3 @@ const StyledLoading: StyledComponent<'div', any, {}, never> = styled.div`
     }
   }
 `
-
-export default LoadingBlock

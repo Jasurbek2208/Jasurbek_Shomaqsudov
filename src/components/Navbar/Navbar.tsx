@@ -1,78 +1,71 @@
-import { block } from 'million/react'
-import { MouseEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
 // Components
 import { Button } from 'components'
 
-const NavbarBlock = block(
-  function Navbar(): JSX.Element {
-    const [menuOpen, setMenuOpen] = useState<Boolean>(false)
-    const [navItems, setNavItems] = useState<Boolean>(false)
-    const [renderCount, setRenderCount] = useState<number>(0)
+export default function Navbar(): JSX.Element {
+  const [menuOpen, setMenuOpen] = useState<boolean>(false)
+  const [navItems, setNavItems] = useState<boolean>(false)
+  const [renderCount, setRenderCount] = useState<number>(0)
 
-    const scrollToAnchor = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
-      // e?.preventDefault()
-      const element = document?.getElementById(id)
+  const scrollToAnchor = (id: string) => {
+    const element = document?.getElementById(id)
 
-      if (element) element?.scrollIntoView({ behavior: 'smooth' })
-      setMenuOpen((p) => !p)
-    }
+    if (element) element?.scrollIntoView({ behavior: 'smooth' })
+    setMenuOpen((p: boolean) => !p)
+  }
 
-    useEffect(() => {
-      setRenderCount((p: number) => ++p)
-    }, [menuOpen])
+  useEffect(() => {
+    setRenderCount((p: number) => ++p)
+  }, [menuOpen])
 
-    useEffect(() => {
-      if (renderCount > 2) {
-        menuOpen ? setNavItems(false) : setNavItems(true)
-      }
-    }, [renderCount])
+  useEffect(() => {
+    if (renderCount > 2) menuOpen ? setNavItems(false) : setNavItems(true)
+  }, [renderCount])
 
-    return (
-      <StyledNavbar>
-        <div className={'menubar-modal' + (menuOpen ? ' open' : ' close')}></div>
+  return (
+    <StyledNavbar>
+      <div className={'menubar-modal' + (menuOpen ? ' open' : ' close')}></div>
 
-        <div className='container'>
-          <div className={'nav' + (menuOpen ? ' open' : navItems ? ' close' : '')}>
-            <ul>
-              <li>
-                <a href='#hero' onClick={(e: MouseEvent<HTMLAnchorElement>) => scrollToAnchor(e, 'hero')}>
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href='#about' onClick={(e: MouseEvent<HTMLAnchorElement>) => scrollToAnchor(e, 'about')}>
-                  About
-                </a>
-              </li>
-              <li>
-                <a href='#works' onClick={(e: MouseEvent<HTMLAnchorElement>) => scrollToAnchor(e, 'works')}>
-                  Works
-                </a>
-              </li>
-              <li>
-                <a href='#contact' onClick={(e: MouseEvent<HTMLAnchorElement>) => scrollToAnchor(e, 'contact')}>
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className={'mobile-menu' + (menuOpen ? ' On' : '')} onClick={() => setMenuOpen((p) => !p)}>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div className='action'>
-            <Button content='Send Order' animatedBtn={true} />
-          </div>
+      <div className='container'>
+        <div className={'nav' + (menuOpen ? ' open' : navItems ? ' close' : '')}>
+          <ul>
+            <li>
+              <a href='#hero' onClick={() => scrollToAnchor('hero')}>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href='#about' onClick={() => scrollToAnchor('about')}>
+                About
+              </a>
+            </li>
+            <li>
+              <a href='#works' onClick={() => scrollToAnchor('works')}>
+                Works
+              </a>
+            </li>
+            <li>
+              <a href='#contact' onClick={() => scrollToAnchor('contact')}>
+                Contact
+              </a>
+            </li>
+          </ul>
         </div>
-      </StyledNavbar>
-    )
-  },
-  { as: 'nav' },
-)
+        <div className={'mobile-menu' + (menuOpen ? ' On' : '')} onClick={() => setMenuOpen((p) => !p)}>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div className='action'>
+          <Button content='Send Order' animatedBtn={true} />
+        </div>
+      </div>
+    </StyledNavbar>
+  )
+}
 
 const StyledNavbar: StyledComponent<'nav', any, {}, never> = styled.nav`
   padding: 10px 0px;
@@ -90,6 +83,7 @@ const StyledNavbar: StyledComponent<'nav', any, {}, never> = styled.nav`
   background: linear-gradient(to right, #243b55, #141e30);
 
   animation: fadeInNavbar 400ms ease-in-out;
+  will-change: margin-top, opacity;
   z-index: 3;
 
   & > .container {
@@ -150,6 +144,7 @@ const StyledNavbar: StyledComponent<'nav', any, {}, never> = styled.nav`
     font-weight: 600;
 
     animation: fadeInNavbar 400ms ease-in-out;
+    will-change: margin-top, opacity;
 
     & > .container {
       display: flex;
@@ -195,11 +190,13 @@ const StyledNavbar: StyledComponent<'nav', any, {}, never> = styled.nav`
           display: block;
 
           animation: animatedOpenMenu 1400ms ease-in-out;
+          will-change: opacity;
         }
 
         &.close {
           display: block;
           animation: animatedCloseMenuItems 200ms ease-in-out forwards;
+          will-change: left, transform, scale, opacity, display;
         }
       }
 
@@ -275,10 +272,12 @@ const StyledNavbar: StyledComponent<'nav', any, {}, never> = styled.nav`
         background: linear-gradient(to right, #243b55, #141e30);
 
         animation: animatedOpenMenu 1000ms ease-in-out;
+        will-change: opacity;
       }
 
       &.close {
         animation: animatedCloseMenu 1000ms ease-in-out forwards;
+        will-change: width, height, background, opacity, display;
       }
     }
   }
@@ -342,5 +341,3 @@ const StyledNavbar: StyledComponent<'nav', any, {}, never> = styled.nav`
     }
   }
 `
-
-export default NavbarBlock

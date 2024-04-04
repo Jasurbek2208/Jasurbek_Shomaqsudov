@@ -1,58 +1,54 @@
-import { block } from 'million/react'
 import styled from 'styled-components'
 
-const FooterBlock = block(
-  function Footer() {
-    return (
-      <StyledFooter>
-        <div className='container'>
-          <main>
-            <ul>
-              <li>
-                <a href='#'>
-                  <img src='/logo.png' alt='Jasurbek Shomaqsudov - Software Engineer logo' />
-                </a>
-              </li>
-              <li>
-                <h3>Jasurbek Shomaqsudov</h3>
-                <h5>Software Engineer</h5>
-              </li>
-            </ul>
+export default function Footer() {
+  return (
+    <StyledFooter>
+      <div className='container'>
+        <main>
+          <ul>
+            <li>
+              <a href='#'>
+                <img src='/logo.png' alt='Jasurbek Shomaqsudov - Software Engineer logo' />
+              </a>
+            </li>
+            <li>
+              <h3>Jasurbek Shomaqsudov</h3>
+              <h5>Software Engineer</h5>
+            </li>
+          </ul>
 
-            <ul>
-              <li>
-                <a href='https://github.com/Jasurbek2208' target='_blank' rel='noopener noreferrer'>
-                  Github
-                </a>
-              </li>
-              <li>
-                <a href='https://t.me/Joni2208' target='_blank' rel='noopener noreferrer'>
-                  Telegram
-                </a>
-              </li>
-              <li>
-                <a href='https://twitter.com/JShomaqsudov' target='_blank' rel='noopener noreferrer'>
-                  X (Twitter)
-                </a>
-              </li>
-              <li>
-                <a href='https://www.linkedin.com/in/jasurbek-shomaqsudov' target='_blank' rel='noopener noreferrer'>
-                  Linkedin
-                </a>
-              </li>
-              <li>
-                <a href='https://www.instagram.com/jasurbek_shomaqsudov' target='_blank' rel='noopener noreferrer'>
-                  instagram
-                </a>
-              </li>
-            </ul>
-          </main>
-        </div>
-      </StyledFooter>
-    )
-  },
-  { as: 'footer' },
-)
+          <ul>
+            <li>
+              <a href='https://github.com/Jasurbek2208' target='_blank' rel='noopener noreferrer'>
+                Github
+              </a>
+            </li>
+            <li>
+              <a href='https://t.me/Joni2208' target='_blank' rel='noopener noreferrer'>
+                Telegram
+              </a>
+            </li>
+            <li>
+              <a href='https://twitter.com/JShomaqsudov' target='_blank' rel='noopener noreferrer'>
+                X (Twitter)
+              </a>
+            </li>
+            <li>
+              <a href='https://www.linkedin.com/in/jasurbek-shomaqsudov' target='_blank' rel='noopener noreferrer'>
+                Linkedin
+              </a>
+            </li>
+            <li>
+              <a href='https://www.instagram.com/jasurbek_shomaqsudov' target='_blank' rel='noopener noreferrer'>
+                instagram
+              </a>
+            </li>
+          </ul>
+        </main>
+      </div>
+    </StyledFooter>
+  )
+}
 
 const StyledFooter = styled.footer`
   padding: 24px 0px;
@@ -83,25 +79,30 @@ const StyledFooter = styled.footer`
 
           li {
             a {
+              position: relative;
               margin: -6px 0px 0px -6px;
               padding: 6px;
               display: block;
               border: none !important;
               outline: none !important;
 
+              &::before {
+                content: '';
+                position: absolute;
+                inset: 0px;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                border: 3px solid;
+                border-color: #fff transparent;
+                animation: rotation 2.2s linear infinite;
+                transition: 200ms scale ease-in;
+                will-change: transform, scale;
+              }
+
               &:hover,
               &:focus {
-                position: relative;
-
                 &::before {
-                  content: '';
-                  position: absolute;
-                  inset: 0px;
-                  transform: translate(-50%, -50%);
-                  border-radius: 50%;
-                  border: 3px solid;
-                  border-color: #fff transparent;
-                  animation: rotation 2s linear infinite;
+                  scale: 110%;
                 }
               }
 
@@ -185,5 +186,3 @@ const StyledFooter = styled.footer`
     }
   }
 `
-
-export default FooterBlock
