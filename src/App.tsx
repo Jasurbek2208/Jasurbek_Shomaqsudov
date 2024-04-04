@@ -14,19 +14,19 @@ import { Contact, Hero, Navbar, About, Works, MatrixLoader, Footer } from 'compo
 const AppBlock = block(
   function App(): JSX.Element {
     return (
-      <StyledApp>
+      <BrowserRouter>
         <GlobalStyles />
         <MatrixLoader />
         <Toaster />
-        <BrowserRouter>
+        <StyledApp>
           <Navbar />
           <Hero />
           <About />
           <Works />
           <Contact />
           <Footer />
-        </BrowserRouter>
-      </StyledApp>
+        </StyledApp>
+      </BrowserRouter>
     )
   },
   { as: 'div' },
