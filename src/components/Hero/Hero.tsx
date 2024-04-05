@@ -1,4 +1,5 @@
 import styled, { StyledComponent } from 'styled-components'
+import heroImage from 'assets/images/illustrations/developer.webp'
 
 export default function Hero() {
   return (
@@ -11,7 +12,7 @@ export default function Hero() {
             <p>Check out the site to learn more about me.</p>
           </div>
           <div className='image'>
-            <img src='assets/images/illustrations/developer.webp' alt='frontend developer illustrator' decoding='async' loading='lazy' />
+            <img src={heroImage} alt='frontend developer illustrator' decoding='async' loading='lazy' />
           </div>
         </main>
       </div>
