@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import million from 'million/compiler'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-swc'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 

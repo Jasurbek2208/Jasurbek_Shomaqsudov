@@ -1,4 +1,3 @@
-export { default as Map } from './Map/Map'
 export { default as Hero } from './Hero/Hero'
 export { default as Input } from './Input/Input'
 export { default as Works } from './Works/Works'

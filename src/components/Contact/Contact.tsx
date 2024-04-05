@@ -21,7 +21,7 @@ export default function Contact(): JSX.Element {
   })
 
   function changeInputs(name: string): void {
-    setError((p) => ({ ...p, [name]: [false, ''] }))
+    setError((p: ErrorState) => ({ ...p, [name]: [false, ''] }))
   }
 
   // Form data checking validation
@@ -30,21 +30,21 @@ export default function Contact(): JSX.Element {
 
     // Checking name
     if (!name.trim().length) {
-      setError((p) => ({
+      setError((p: ErrorState) => ({
         ...p,
         name: [true, 'Name is required!'],
       }))
 
       isNotValid = true
     } else if (name.trim().length < 7) {
-      setError((p) => ({
+      setError((p: ErrorState) => ({
         ...p,
         name: [true, 'Name is too short, enter at least 7 characters.'],
       }))
 
       isNotValid = true
     } else if (name.trim().length > 55) {
-      setError((p) => ({
+      setError((p: ErrorState) => ({
         ...p,
         name: [true, 'You can enter a maximum of 55 characters.'],
       }))
@@ -54,7 +54,7 @@ export default function Contact(): JSX.Element {
 
     // Checking phone
     if (!phone.trim().length) {
-      setError((p) => ({
+      setError((p: ErrorState) => ({
         ...p,
         phone: [true, 'Phone is required!'],
       }))
@@ -64,21 +64,21 @@ export default function Contact(): JSX.Element {
 
     // Checking message
     if (!message.trim().length) {
-      setError((p) => ({
+      setError((p: ErrorState) => ({
         ...p,
         message: [true, 'Message is required!'],
       }))
 
       isNotValid = true
     } else if (message.trim().length < 5) {
-      setError((p) => ({
+      setError((p: ErrorState) => ({
         ...p,
         message: [true, 'You wrote a very short message. The message must be at least 5 characters long.'],
       }))
 
       isNotValid = true
     } else if (message.trim().length > 1200) {
-      setError((p) => ({
+      setError((p: ErrorState) => ({
         ...p,
         message: [true, 'You wrote a very long message. The message should be no more than 1200 characters long.'],
       }))
@@ -92,7 +92,7 @@ export default function Contact(): JSX.Element {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault()
 
-    const API_URL = `https://api.telegram.org/bot${import.meta.env.VITE_TELEGRAM_BOT_TOKEN}/sendMessage`
+    const API_URL: string = `https://api.telegram.org/bot${import.meta.env.VITE_TELEGRAM_BOT_TOKEN}/sendMessage`
 
     let name: string = (e.currentTarget[0] as HTMLInputElement).value
     let phone: string = (e.currentTarget[1] as HTMLInputElement).value
@@ -100,7 +100,7 @@ export default function Contact(): JSX.Element {
 
     if (checkValidate(name, phone, message)) return
     setBtnDisable(true)
-    let text: String = `<b>Ismi:</b> ${name} \n\n<b>Telefon raqami:</b> ${phone} \n\n<b>Xabar:</b> ${message}`
+    let text: string = `<b>Ismi:</b> ${name} \n\n<b>Telefon raqami:</b> ${phone} \n\n<b>Xabar:</b> ${message}`
 
     try {
       await axios.post(
@@ -116,7 +116,7 @@ export default function Contact(): JSX.Element {
           },
         },
       )
-      ;(e.target as HTMLFormElement).reset()
+      ;(e.target as HTMLFormElement)?.reset()
       toast.success('Message sent successfully!')
     } catch {
       toast.error('There was a problem sending the message. Please try again!')
@@ -127,20 +127,20 @@ export default function Contact(): JSX.Element {
 
   return (
     <StyledContact id='contact'>
-      <div className='container full-h'>
+      <div className='container'>
         <form onSubmit={handleSubmit}>
           <div className='input'>
-            <label htmlFor='fullname'>F.I.O.:</label>
-            <Input type='text' forID='fullname' isError={error.name[0]} placeholder='Write your fullname' onChange={() => changeInputs('name')} />
+            <label htmlFor='fullname'>F.I.O:</label>
+            <Input type='text' forID='fullname' isError={error?.name[0]} placeholder='Write your fullname' onChange={() => changeInputs('name')} />
 
-            {error.name[0] && <span className='error-message'>{error.name[1]}</span>}
+            {error?.name[0] && <span className='error-message'>{error?.name[1]}</span>}
           </div>
           <div className='input'>
             <label htmlFor='tel'>Phone:</label>
             <Input
               type='tel'
               forID='tel'
-              isError={error.phone[0]}
+              isError={error?.phone[0]}
               placeholder='Write your phone number'
               pattern='[+]{1}[0-9]{3}[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}'
               onChange={(e) => {
@@ -153,28 +153,28 @@ export default function Contact(): JSX.Element {
               }}
             />
 
-            {error.phone[0] && <span className='error-message'>{error.phone[1]}</span>}
+            {error?.phone[0] && <span className='error-message'>{error?.phone[1]}</span>}
           </div>
 
           <div className='input'>
             <label htmlFor='message'>Message:</label>
-            <Input type='textarea' forID='message' isError={error.message[0]} placeholder='Write your short message' onChangeArea={() => changeInputs('message')} />
+            <Input type='textarea' forID='message' isError={error?.message[0]} placeholder='Write your short message' onChangeArea={() => changeInputs('message')} />
 
-            {error.message[0] && <span className={'error-message' + (error.message[1].trim().length >= 24 ? ' long' : '')}>{error.message[1]}</span>}
+            {error?.message[0] && <span className={'error-message' + (error?.message[1].trim().length >= 24 ? ' long' : '')}>{error?.message[1]}</span>}
           </div>
 
           <div className='input'>
             <Button type='submit' content='Send message' disable={btnDisable} animatedBtn={false} />
           </div>
         </form>
-
-        {/* Map */}
       </div>
     </StyledContact>
   )
 }
 
 const StyledContact: StyledComponent<'section', any, {}, never> = styled.section`
+  padding: 10px 0px 80px;
+
   .container {
     position: relative;
     display: flex;

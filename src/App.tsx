@@ -5,9 +5,6 @@ import styled, { StyledComponent } from 'styled-components'
 // Toast
 import { Toaster } from 'react-hot-toast'
 
-// Global Styles
-import { GlobalStyles } from 'assets/style/Global'
-
 // Components
 import { Contact, Hero, Navbar, About, Works, MatrixLoader, Footer } from 'components'
 
@@ -15,7 +12,6 @@ const AppBlock = block(
   function App(): JSX.Element {
     return (
       <BrowserRouter>
-        <GlobalStyles />
         <MatrixLoader />
         <Toaster />
         <StyledApp>
