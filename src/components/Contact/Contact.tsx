@@ -128,45 +128,49 @@ export default function Contact(): JSX.Element {
   return (
     <StyledContact id='contact'>
       <div className='container'>
-        <form onSubmit={handleSubmit}>
-          <div className='input'>
-            <label htmlFor='fullname'>F.I.O:</label>
-            <Input type='text' forID='fullname' isError={error?.name[0]} placeholder='Write your fullname' onChange={() => changeInputs('name')} />
+        <h2>Contact</h2>
 
-            {error?.name[0] && <span className='error-message'>{error?.name[1]}</span>}
-          </div>
-          <div className='input'>
-            <label htmlFor='tel'>Phone:</label>
-            <Input
-              type='tel'
-              forID='tel'
-              isError={error?.phone[0]}
-              placeholder='Write your phone number'
-              pattern='[+]{1}[0-9]{3}[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}'
-              onChange={(e) => {
-                changeInputs('phone')
-                e.target.setCustomValidity('')
+        <div className='content'>
+          <form onSubmit={handleSubmit}>
+            <div className='input'>
+              <label htmlFor='fullname'>F.I.O:</label>
+              <Input type='text' forID='fullname' isError={error?.name[0]} placeholder='Write your fullname' onChange={() => changeInputs('name')} />
 
-                if (!e.target.validity.valid) {
-                  e.target.setCustomValidity('The number was entered incorrectly ! Example: +998971050505')
-                }
-              }}
-            />
+              {error?.name[0] && <span className='error-message'>{error?.name[1]}</span>}
+            </div>
+            <div className='input'>
+              <label htmlFor='tel'>Phone:</label>
+              <Input
+                type='tel'
+                forID='tel'
+                isError={error?.phone[0]}
+                placeholder='Write your phone number'
+                pattern='[+]{1}[0-9]{3}[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}'
+                onChange={(e) => {
+                  changeInputs('phone')
+                  e.target.setCustomValidity('')
 
-            {error?.phone[0] && <span className='error-message'>{error?.phone[1]}</span>}
-          </div>
+                  if (!e.target.validity.valid) {
+                    e.target.setCustomValidity('The number was entered incorrectly ! Example: +998971050505')
+                  }
+                }}
+              />
 
-          <div className='input'>
-            <label htmlFor='message'>Message:</label>
-            <Input type='textarea' forID='message' isError={error?.message[0]} placeholder='Write your short message' onChangeArea={() => changeInputs('message')} />
+              {error?.phone[0] && <span className='error-message'>{error?.phone[1]}</span>}
+            </div>
 
-            {error?.message[0] && <span className={'error-message' + (error?.message[1].trim().length >= 24 ? ' long' : '')}>{error?.message[1]}</span>}
-          </div>
+            <div className='input'>
+              <label htmlFor='message'>Message:</label>
+              <Input type='textarea' forID='message' isError={error?.message[0]} placeholder='Write your short message' onChangeArea={() => changeInputs('message')} />
 
-          <div className='input'>
-            <Button type='submit' content='Send message' disable={btnDisable} animatedBtn={false} />
-          </div>
-        </form>
+              {error?.message[0] && <span className={'error-message' + (error?.message[1].trim().length >= 24 ? ' long' : '')}>{error?.message[1]}</span>}
+            </div>
+
+            <div className='input'>
+              <Button type='submit' content='Send message' disable={btnDisable} animatedBtn={false} />
+            </div>
+          </form>
+        </div>
       </div>
     </StyledContact>
   )
@@ -176,61 +180,57 @@ const StyledContact: StyledComponent<'section', any, {}, never> = styled.section
   padding: 10px 0px 80px;
 
   .container {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-
-    form {
-      width: 420px;
-      padding-top: 130px;
-      height: 100%;
-
+    h2 {
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .content {
+      position: relative;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      justify-content: flex-start;
-      flex-direction: column;
-      row-gap: 40px;
-      z-index: 2;
+      justify-content: space-between;
 
-      .input {
-        position: relative;
-        width: 100%;
-        max-width: 420px;
+      form {
+        padding-top: 30px;
+        width: 420px;
+        height: 100%;
 
-        label {
-          color: #fff;
-          font-weight: 500;
-        }
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        row-gap: 40px;
+        z-index: 2;
 
-        .error-message {
-          position: absolute;
-          bottom: -17px;
-          left: 0px;
+        .input {
+          position: relative;
+          width: 100%;
+          max-width: 420px;
 
-          color: red;
-          font-size: 0.84rem;
-          font-weight: 600;
-          text-shadow: 0px 0px 15px #000;
+          label {
+            color: #fff;
+            font-weight: 500;
+          }
 
-          &.long {
-            bottom: -34px;
+          .error-message {
+            position: absolute;
+            bottom: -17px;
+            left: 0px;
+
+            color: red;
+            font-size: 0.84rem;
+            font-weight: 600;
+            text-shadow: 0px 0px 15px #000;
+
+            &.long {
+              bottom: -34px;
+            }
           }
         }
       }
-    }
-
-    .map {
-      position: absolute;
-      top: 0;
-      right: 0;
-
-      width: 100%;
-      height: 100%;
-
-      overflow: hidden;
-      z-index: 1;
     }
   }
 `

@@ -1,42 +1,42 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, RefObject } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
 export default function MatrixLoader(): JSX.Element {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  let prevWidth = window?.innerWidth
+  const canvasRef: RefObject<HTMLCanvasElement> = useRef<HTMLCanvasElement>(null)
+  let prevWidth: number = window?.innerWidth
 
   useEffect(() => {
     let animationFrame: NodeJS.Timeout
     let resizeTimeout: NodeJS.Timeout
 
-    const initializeCanvas = () => {
-      if (canvasRef.current) {
-        const canvas = canvasRef.current
-        const ctx = canvas.getContext('2d')
+    const initializeCanvas: () => void = () => {
+      if (canvasRef?.current) {
+        const canvas: HTMLCanvasElement = canvasRef.current
+        const ctx: CanvasRenderingContext2D | null = canvas.getContext('2d')
 
         if (ctx) {
           canvas.width = window?.innerWidth
           canvas.height = window?.innerHeight + 200
 
-          const letters = 'ABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZ'.split('')
-          const fontSize = 10
-          const columns = canvas?.width / fontSize
+          const letters: string[] = 'ABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZ'?.split('')
+          const fontSize: number = 10
+          const columns: number = canvas?.width / fontSize
           const drops: number[] = []
 
-          for (let i = 0; i < columns; i++) {
+          for (let i: number = 0; i < columns; i++) {
             drops[i] = 1
           }
 
           const draw = () => {
             ctx.fillStyle = 'rgba(0, 0, 0, .1)'
-            ctx.fillRect(0, 0, canvas?.width, canvas?.height)
+            ctx?.fillRect(0, 0, canvas?.width, canvas?.height)
 
-            for (let i = 0; i < drops.length; i++) {
-              const text = letters[Math.floor(Math.random() * letters.length)]
+            for (let i: number = 0; i < drops?.length; i++) {
+              const text: string = letters[Math?.floor(Math?.random() * letters?.length)]
               ctx.fillStyle = '#0059ff'
-              ctx.fillText(text, i * fontSize, drops[i] * fontSize)
+              ctx?.fillText(text, i * fontSize, drops[i] * fontSize)
               drops[i]++
-              if (drops[i] * fontSize > canvas?.height && Math.random() > 0.95) {
+              if (drops[i] * fontSize > canvas?.height && Math?.random() > 0.95) {
                 drops[i] = 0
               }
             }
@@ -52,20 +52,22 @@ export default function MatrixLoader(): JSX.Element {
     const handleResize = () => {
       clearTimeout(resizeTimeout)
       resizeTimeout = setTimeout(() => {
-        if (window.innerWidth !== prevWidth) {
-          prevWidth = window.innerWidth
+        if (window?.innerWidth !== prevWidth) {
+          prevWidth = window?.innerWidth
           initializeCanvas()
         }
       }, 400)
     }
 
-    window.addEventListener('resize', handleResize)
+    window?.addEventListener('resize', handleResize)
 
-    initializeCanvas()
+    setTimeout(() => {
+      initializeCanvas()
+    }, 500)
 
     return () => {
       clearInterval(animationFrame)
-      window.removeEventListener('resize', handleResize)
+      window?.removeEventListener('resize', handleResize)
     }
   }, [])
 
@@ -78,9 +80,12 @@ export default function MatrixLoader(): JSX.Element {
 
 const StyledMatrixLoader: StyledComponent<'div', any, {}, never> = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0px;
   z-index: -10;
-  height: 100%;
+  height: 100dvh;
   min-height: 100dvh;
+  max-height: 100dvh;
+  background: #141e30c0 !important;
+  background: -webkit-linear-gradient(to right, #243b55ab, #141e30ab) !important;
+  background: linear-gradient(to right, #243b55ab, #141e30ab) !important;
 `

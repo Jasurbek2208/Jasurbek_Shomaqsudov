@@ -1,22 +1,18 @@
 @import './assets/style/fonts.css';
-
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
-
 .container {
   margin: 0 auto;
   padding: 0px 16px;
   max-width: 1200px;
 }
-
 .full-h {
   height: 100dvh;
 }
-
 body {
   height: 100%;
   min-height: 100dvh;
@@ -25,8 +21,10 @@ body {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  background: #141e30c0 !important;
+  background: -webkit-linear-gradient(to right, #243b55ab, #141e30ab) !important;
+  background: linear-gradient(to right, #243b55ab, #141e30ab) !important;
 }
-
 body > h1.hidden-h1-forever {
   margin: 0px !important;
   padding: 0px !important;
@@ -35,4 +33,17 @@ body > h1.hidden-h1-forever {
   font-weight: 100 !important;
   overflow: hidden !important;
   transform: scale(0) !important;
+}
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  background: #141e30c0; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #141e30d2; 
 }

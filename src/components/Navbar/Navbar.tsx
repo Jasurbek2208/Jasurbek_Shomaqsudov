@@ -10,7 +10,7 @@ export default function Navbar(): JSX.Element {
   const [renderCount, setRenderCount] = useState<number>(0)
 
   const scrollToAnchor = (id: string) => {
-    const element = document?.getElementById(id)
+    const element: HTMLElement | null = document?.getElementById(id)
 
     if (element) element?.scrollIntoView({ behavior: 'smooth' })
     setMenuOpen((p: boolean) => !p)
