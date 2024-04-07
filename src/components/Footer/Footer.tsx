@@ -113,12 +113,12 @@ const StyledFooter = styled.footer`
 
             h3 {
               margin-top: 8px;
-              font-size: 14px;
             }
 
             h4 {
               margin: 2px 0px 0px 8px;
               font-style: italic;
+              font-size: 14px;
             }
           }
         }
