@@ -19,9 +19,17 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: true,
     minify: 'terser',
-    target: 'ESNext',
+    target: 'esnext',
     commonjsOptions: {
       ignoreDynamicRequires: true,
+    },
+    brotliSize: true,
+    chunkSizeWarningLimit: 1024,
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
     },
   },
   plugins: [million.vite({ auto: true }), react(), reactRefresh(), tsconfigPaths()],
