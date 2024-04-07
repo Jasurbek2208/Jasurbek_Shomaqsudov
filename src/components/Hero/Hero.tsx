@@ -8,7 +8,7 @@ export default function Hero() {
         <main>
           <div className='description'>
             <h1>Jasurbek Shomaqsudov</h1>
-            <h4>Frontend developer</h4>
+            <h2>Frontend developer</h2>
             <p>Check out the site to learn more about me.</p>
           </div>
           <div className='image'>
@@ -41,7 +41,7 @@ const StyledHero: StyledComponent<'section', any, {}, never> = styled.section`
         will-change: margin-left, opacity;
       }
 
-      h4 {
+      h2 {
         margin: 14px 0px;
         font-size: 1.5rem;
         animation: fadeIn 600ms ease-in-out;
@@ -78,8 +78,8 @@ const StyledHero: StyledComponent<'section', any, {}, never> = styled.section`
           font-size: 2.4rem;
         }
 
-        h3 {
-          font-size: 1.6rem;
+        h2 {
+          font-size: 1.3rem;
         }
 
         p {
