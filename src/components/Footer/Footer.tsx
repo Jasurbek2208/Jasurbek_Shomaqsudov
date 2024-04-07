@@ -13,7 +13,7 @@ export default function Footer() {
             </li>
             <li>
               <h3>Jasurbek Shomaqsudov</h3>
-              <h5>Software Engineer</h5>
+              <h4>Software Engineer</h4>
             </li>
           </ul>
 
@@ -115,7 +115,7 @@ const StyledFooter = styled.footer`
               margin-top: 8px;
             }
 
-            h5 {
+            h4 {
               margin: 2px 0px 0px 8px;
               font-style: italic;
             }
@@ -167,7 +167,7 @@ const StyledFooter = styled.footer`
               font-size: 18px;
             }
 
-            h5 {
+            h4 {
               font-size: 13px;
             }
           }
