@@ -8,7 +8,9 @@ export default function Footer() {
           <ul>
             <li>
               <a href='#'>
-                <img src='/logo.png' alt='Jasurbek Shomaqsudov - Software Engineer logo' />
+                <div className="img">
+                  <img src='/logo.png' alt='Jasurbek Shomaqsudov - Software Engineer logo' width='100%' height='auto' />
+                </div>
               </a>
             </li>
             <li>
@@ -106,7 +108,7 @@ const StyledFooter = styled.footer`
                 }
               }
 
-              img {
+              .img {
                 width: 60px;
               }
             }
@@ -158,7 +160,7 @@ const StyledFooter = styled.footer`
 
           li {
             a {
-              img {
+              .img {
                 width: 55px;
               }
             }
