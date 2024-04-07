@@ -1,5 +1,6 @@
 import { RefObject, useEffect, useRef, useState } from 'react'
 import styled, { StyledComponent } from 'styled-components'
+import { useInView } from 'react-intersection-observer'
 
 // Firebase
 import { collection, getDocs } from 'firebase/firestore'
@@ -31,6 +32,15 @@ programming community.`
 export default function About() {
   const [clients, setClients] = useState<IClient[] | null>(null)
   const [skills, setSkills] = useState<IClient[] | null>(null)
+
+  // Intersection Observer Hook
+  const { ref: skillsRef, inView: skillsInView } = useInView({
+    threshold: 0.1, // Trigger when 10% of the component is in view
+  })
+
+  const { ref: clientsRef, inView: clientsInView } = useInView({
+    threshold: 0.1, // Trigger when 10% of the component is in view
+  })
 
   const sliderSkillsRef: RefObject<Slider> = useRef<Slider>(null)
   const sliderClientsRef: RefObject<Slider> = useRef<Slider>(null)
@@ -98,10 +108,19 @@ export default function About() {
     } catch {}
   }
 
+  // Get Skills data when it comes into view
   useEffect(() => {
-    getSkills()
-    getClients()
-  }, [])
+    if (skillsInView) {
+      getSkills()
+    }
+  }, [skillsInView])
+
+  // Get Clients data when it comes into view
+  useEffect(() => {
+    if (clientsInView) {
+      getClients()
+    }
+  }, [clientsInView])
 
   return (
     <StyledAbout id='about'>
@@ -116,7 +135,7 @@ export default function About() {
           </div>
 
           {/* Skills block */}
-          <div className='skills'>
+          <div className='skills' ref={skillsRef}>
             <h2>Skills</h2>
 
             {skills && skills?.length > 0 && (
@@ -131,7 +150,7 @@ export default function About() {
           </div>
 
           {/* Clients block */}
-          <div className='clients'>
+          <div className='clients' ref={clientsRef}>
             <h2>Happy Clients</h2>
 
             {clients && clients?.length > 0 && (

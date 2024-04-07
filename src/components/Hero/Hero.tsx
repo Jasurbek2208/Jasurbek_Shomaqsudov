@@ -65,6 +65,7 @@ const StyledHero: StyledComponent<'section', any, {}, never> = styled.section`
       img {
         width: 100%;
         position: absolute;
+        image-rendering: optimizeQuality;
         animation: illustratorAnimation 8s infinite;
         will-change: transform;
         z-index: 1;
