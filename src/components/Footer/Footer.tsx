@@ -46,13 +46,13 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href='https://www.linkedin.com/in/jasurbek-shomaqsudov' target='_blank' rel='noopener noreferrer'>
-                Linkedin
+              <a href='https://www.linkedin.com/in/jasurbek-shomaqsudov?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' target='_blank' rel='noopener noreferrer'>
+                LinkedIn
               </a>
             </li>
             <li>
-              <a href='https://www.instagram.com/jasurbek_shomaqsudov' target='_blank' rel='noopener noreferrer'>
-                instagram
+              <a href='https://www.instagram.com/jasurbek_shomaqsudov?igsh=M2l3b2FpOG42OTRl' target='_blank' rel='noopener noreferrer'>
+                Instagram
               </a>
             </li>
           </ul>
