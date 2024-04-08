@@ -1,7 +1,7 @@
-import styled, { StyledComponent } from 'styled-components'
+import styled from 'styled-components'
 export default () => <StyledLoading />
 
-const StyledLoading: StyledComponent<'div', any, {}, never> = styled.div`
+const StyledLoading = styled.div`
   border: 4px solid #f3f3f3;
   border-radius: 50%;
   border-top: 4px solid #234179;

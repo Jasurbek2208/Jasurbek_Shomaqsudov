@@ -23,7 +23,6 @@ export default defineConfig({
     commonjsOptions: {
       ignoreDynamicRequires: true,
     },
-    brotliSize: true,
     chunkSizeWarningLimit: 1024,
     terserOptions: {
       compress: {

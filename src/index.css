@@ -25,8 +25,8 @@ body {
   background: -webkit-linear-gradient(to right, #243b55ab, #141e30ab) !important;
   background: linear-gradient(to right, #243b55ab, #141e30ab) !important;
 }
-body > h1.hidden-h1-forever,
-body > h2.hidden-h1-forever {
+body > h1.hidden-title-forever,
+body > h2.hidden-title-forever {
   margin: 0px !important;
   padding: 0px !important;
   display: none !important;

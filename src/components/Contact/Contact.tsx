@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import styled, { StyledComponent } from 'styled-components'
+import styled from 'styled-components'
 
 // Toast
 import toast from 'react-hot-toast'
@@ -176,7 +176,7 @@ export default function Contact(): JSX.Element {
   )
 }
 
-const StyledContact: StyledComponent<'section', any, {}, never> = styled.section`
+const StyledContact = styled.section`
   padding: 10px 0px 80px;
 
   .container {

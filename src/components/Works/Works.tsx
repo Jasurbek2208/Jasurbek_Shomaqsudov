@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useRef, useState } from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import styled from 'styled-components'
 
 // Firebase
 import { collection, getDocs } from 'firebase/firestore'
@@ -90,7 +90,7 @@ export default function Works() {
   )
 }
 
-const StyledWorks: StyledComponent<'section', any, {}, never> = styled.section`
+const StyledWorks = styled.section`
   .container > main {
     padding: 80px 0px;
     color: #fff;

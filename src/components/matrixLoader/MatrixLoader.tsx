@@ -1,5 +1,5 @@
 import { useRef, useEffect, RefObject } from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import styled from 'styled-components'
 
 export default function MatrixLoader(): JSX.Element {
   const canvasRef: RefObject<HTMLCanvasElement> = useRef<HTMLCanvasElement>(null)
@@ -78,7 +78,7 @@ export default function MatrixLoader(): JSX.Element {
   )
 }
 
-const StyledMatrixLoader: StyledComponent<'div', any, {}, never> = styled.div`
+const StyledMatrixLoader = styled.div`
   position: fixed;
   inset: 0px;
   z-index: -10;

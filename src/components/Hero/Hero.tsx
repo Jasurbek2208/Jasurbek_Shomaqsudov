@@ -1,7 +1,18 @@
-import styled, { StyledComponent } from 'styled-components'
+import { useEffect, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
+import styled from 'styled-components'
 import heroImage from 'assets/images/illustrations/developer.webp'
 
 export default function Hero() {
+  const [imageSrc, setImageSrc] = useState<string>('')
+  const [imageRef, inView] = useInView()
+
+  useEffect(() => {
+    if (inView) {
+      setImageSrc(heroImage)
+    }
+  }, [inView, heroImage])
+
   return (
     <StyledHero id='hero'>
       <div className='container full-h'>
@@ -12,7 +23,7 @@ export default function Hero() {
             <p>Check out the site to learn more about me.</p>
           </div>
           <div className='image'>
-            <img src={heroImage} alt='frontend developer illustrator' decoding='async' loading='lazy' width='100%' height='auto' />
+            <img ref={imageRef} src={imageSrc} alt='frontend developer illustrator' decoding='async' loading='lazy' width='100%' height='auto' />
           </div>
         </main>
       </div>
@@ -20,7 +31,7 @@ export default function Hero() {
   )
 }
 
-const StyledHero: StyledComponent<'section', any, {}, never> = styled.section`
+const StyledHero = styled.section`
   .container > main {
     height: 100dvh;
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import styled from 'styled-components'
 
 // Components
 import Loading from '../Loading/Loading'
@@ -27,7 +27,7 @@ export default function Button({ content, type = 'button', disable, animatedBtn 
   )
 }
 
-const StyledButton: StyledComponent<'button', any, {}, never> = styled.button`
+const StyledButton = styled.button`
   cursor: pointer;
   padding: 17px 16px;
   position: relative;

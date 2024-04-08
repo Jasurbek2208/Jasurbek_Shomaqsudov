@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useRef, useState } from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import styled from 'styled-components'
 import { useInView } from 'react-intersection-observer'
 
 // Firebase
@@ -171,7 +171,7 @@ export default function About() {
   )
 }
 
-const StyledAbout: StyledComponent<'section', any, {}, never> = styled.section`
+const StyledAbout = styled.section`
   scroll-snap-align: center;
 
   .container > main {

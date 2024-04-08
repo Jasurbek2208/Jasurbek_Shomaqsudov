@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import styled from 'styled-components'
 
 // Interface
 interface IInput {
@@ -20,7 +20,7 @@ export default function Input({ type, forID, isError, placeholder, pattern, onCh
   )
 }
 
-const StyledInput: StyledComponent<'input', any, {}, never> = styled.input`
+const StyledInput = styled.input`
   padding: 15px 10px;
   margin-top: 4px;
   width: 100%;
@@ -45,7 +45,7 @@ const StyledInput: StyledComponent<'input', any, {}, never> = styled.input`
   }
 `
 
-const StyledTextarea: StyledComponent<'textarea', any, {}, never> = styled.textarea`
+const StyledTextarea = styled.textarea`
   padding: 15px 10px;
   margin-top: 4px;
   width: 100% !important;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import styled from 'styled-components'
 
 // Components
 import { Button } from 'components'
@@ -67,7 +67,7 @@ export default function Navbar(): JSX.Element {
   )
 }
 
-const StyledNavbar: StyledComponent<'nav', any, {}, never> = styled.nav`
+const StyledNavbar = styled.nav`
   padding: 10px 0px;
 
   position: fixed;
