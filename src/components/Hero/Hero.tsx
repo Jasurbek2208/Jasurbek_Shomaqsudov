@@ -15,7 +15,7 @@ export default function Hero() {
 
   return (
     <StyledHero id='hero'>
-      <div className='container full-h'>
+      <div className='container'>
         <main>
           <div className='description'>
             <h1>Jasurbek Shomaqsudov</h1>
@@ -23,7 +23,7 @@ export default function Hero() {
             <p>Check out the site to learn more about me.</p>
           </div>
           <div className='image'>
-            <img ref={imageRef} src={imageSrc} alt='frontend developer illustrator' decoding='async' loading='lazy' width='100%' height='auto' />
+            <img ref={imageRef} src={imageSrc} alt='frontend developer illustrator' decoding='async' loading='lazy' width='300' height='300' />
           </div>
         </main>
       </div>
@@ -33,7 +33,7 @@ export default function Hero() {
 
 const StyledHero = styled.section`
   .container > main {
-    height: 100dvh;
+    height: 100vh;
 
     display: flex;
     align-items: center;
@@ -74,7 +74,8 @@ const StyledHero = styled.section`
       will-change: margin-left, opacity;
 
       img {
-        width: 100%;
+        width: 100% !important;
+        height: auto !important;
         position: absolute;
         image-rendering: optimizeQuality;
         animation: illustratorAnimation 8s infinite;

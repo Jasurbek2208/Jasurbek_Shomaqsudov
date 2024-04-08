@@ -1,15 +1,27 @@
+import { useEffect, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
+import logo from '/logo.webp'
 
 export default function Footer() {
+  const [logoSrc, setLogoSrc] = useState<string>('')
+  const [logoRef, inView] = useInView({ threshold: 0.5 })
+
+  useEffect(() => {
+    if (inView) setLogoSrc(logo)
+  }, [inView, logo])
+
   return (
     <StyledFooter>
       <div className='container'>
         <main>
           <ul>
-            <li>
-              <a href='#'>
-                <img src='/logo.png' alt='Jasurbek Shomaqsudov - Software Engineer logo' width='60' height='60' />
-              </a>
+            <li ref={logoRef}>
+              {logoSrc && (
+                <a href='#'>
+                  <img src={logoSrc} alt='Jasurbek Shomaqsudov - Software Engineer logo' width='60' height='60' />
+                </a>
+              )}
             </li>
             <li>
               <h3>Jasurbek Shomaqsudov</h3>

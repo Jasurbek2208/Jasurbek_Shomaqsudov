@@ -33,13 +33,12 @@ export default function About() {
   const [clients, setClients] = useState<IClient[] | null>(null)
   const [skills, setSkills] = useState<IClient[] | null>(null)
 
-  // Intersection Observer Hook
   const { ref: skillsRef, inView: skillsInView } = useInView({
-    threshold: 0.1, // Trigger when 10% of the component is in view
+    threshold: 0.1,
   })
 
   const { ref: clientsRef, inView: clientsInView } = useInView({
-    threshold: 0.1, // Trigger when 10% of the component is in view
+    threshold: 0.1,
   })
 
   const sliderSkillsRef: RefObject<Slider> = useRef<Slider>(null)
@@ -110,16 +109,12 @@ export default function About() {
 
   // Get Skills data when it comes into view
   useEffect(() => {
-    if (skillsInView) {
-      getSkills()
-    }
+    if (skillsInView && (!skills || skills?.length === 0)) getSkills()
   }, [skillsInView])
 
   // Get Clients data when it comes into view
   useEffect(() => {
-    if (clientsInView) {
-      getClients()
-    }
+    if (clientsInView && (!clients || clients?.length === 0)) getClients()
   }, [clientsInView])
 
   return (

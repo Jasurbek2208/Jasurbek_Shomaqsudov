@@ -1,4 +1,5 @@
 import { RefObject, useEffect, useRef, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 
 // Firebase
@@ -17,6 +18,8 @@ import { IWorks } from 'types'
 
 export default function Works() {
   const [data, setData] = useState<IWorks[] | null>(null)
+
+  const [dataRef, inView] = useInView({ threshold: 0.5 })
 
   const sliderWorksRef: RefObject<Slider> = useRef<Slider>(null)
 
@@ -53,24 +56,23 @@ export default function Works() {
 
     try {
       const querySnapshot = await getDocs(collection(db, 'works'))
-      querySnapshot.forEach((doc: any) => {
-        list.push(doc?.data())
+      querySnapshot?.forEach((doc: any) => {
+        list?.push(doc?.data())
       })
 
       setData(list)
-    } catch (error) {
-      console.log(error)
-    }
+    } catch {}
   }
 
+  // Get Works data when it comes into view
   useEffect(() => {
-    getWorks()
-  }, [])
+    if (inView && (!data || data?.length === 0)) getWorks()
+  }, [inView])
 
   return (
     <StyledWorks id='works'>
       <div className='container'>
-        <main>
+        <main ref={dataRef}>
           <h2>Works</h2>
 
           {data && data?.length > 0 && (
