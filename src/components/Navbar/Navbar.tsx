@@ -144,6 +144,9 @@ const StyledNavbar = styled.nav`
     font-weight: 600;
 
     animation: fadeInNavbar 400ms ease-in-out;
+    -o-animation: fadeInNavbar 400ms ease-in-out;
+    -moz-animation: fadeInNavbar 400ms ease-in-out;
+    -webkit-animation: fadeInNavbar 400ms ease-in-out;
     will-change: margin-top, opacity;
 
     & > .container {
@@ -190,12 +193,18 @@ const StyledNavbar = styled.nav`
           display: block;
 
           animation: animatedOpenMenu 1400ms ease-in-out;
+          -o-animation: animatedOpenMenu 1400ms ease-in-out;
+          -moz-animation: animatedOpenMenu 1400ms ease-in-out;
+          -webkit-animation: animatedOpenMenu 1400ms ease-in-out;
           will-change: opacity;
         }
 
         &.close {
           display: block;
           animation: animatedCloseMenuItems 200ms ease-in-out forwards;
+          -o-animation: animatedCloseMenuItems 200ms ease-in-out forwards;
+          -moz-animation: animatedCloseMenuItems 200ms ease-in-out forwards;
+          -webkit-animation: animatedCloseMenuItems 200ms ease-in-out forwards;
           will-change: left, transform, scale, opacity, display;
         }
       }
@@ -272,11 +281,17 @@ const StyledNavbar = styled.nav`
         background: linear-gradient(to right, #243b55, #141e30);
 
         animation: animatedOpenMenu 1000ms ease-in-out;
+        -o-animation: animatedOpenMenu 1000ms ease-in-out;
+        -moz-animation: animatedOpenMenu 1000ms ease-in-out;
+        -webkit-animation: animatedOpenMenu 1000ms ease-in-out;
         will-change: opacity;
       }
 
       &.close {
         animation: animatedCloseMenu 1000ms ease-in-out forwards;
+        -o-animation: animatedCloseMenu 1000ms ease-in-out forwards;
+        -moz-animation: animatedCloseMenu 1000ms ease-in-out forwards;
+        -webkit-animation: animatedCloseMenu 1000ms ease-in-out forwards;
         will-change: width, height, background, opacity, display;
       }
     }

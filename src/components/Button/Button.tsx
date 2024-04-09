@@ -72,6 +72,9 @@ const StyledButton = styled.button`
   &.on-animate {
     padding: 14px 16px;
     animation: buttonAnimate 10s infinite 2s;
+    -o-animation: buttonAnimate 10s infinite 2s;
+    -moz-animation: buttonAnimate 10s infinite 2s;
+    -webkit-animation: buttonAnimate 10s infinite 2s;
   }
 
   &:hover,

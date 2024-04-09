@@ -107,6 +107,9 @@ const StyledFooter = styled.footer`
                 border: 3px solid;
                 border-color: #fff transparent;
                 animation: rotation 2.2s linear infinite;
+                -o-animation: rotation 2.2s linear infinite;
+                -moz-animation: rotation 2.2s linear infinite;
+                -webkit-animation: rotation 2.2s linear infinite;
                 transition: 200ms scale ease-in;
                 will-change: transform, scale;
               }

@@ -7,8 +7,10 @@ const StyledLoading = styled.div`
   border-top: 4px solid #234179;
   width: 100%;
   height: 100%;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
+  -o-animation: spin 2s linear infinite;
+  -moz-animation: spin 2s linear infinite;
+  -webkit-animation: spin 2s linear infinite;
 
   /* Safari */
   @-webkit-keyframes spin {

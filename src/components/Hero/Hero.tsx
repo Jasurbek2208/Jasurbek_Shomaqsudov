@@ -39,6 +39,9 @@ const StyledHero = styled.section`
       h1 {
         font-size: 2.9rem;
         animation: fadeIn 500ms ease-in-out;
+        -o-animation: fadeIn 500ms ease-in-out;
+        -moz-animation: fadeIn 500ms ease-in-out;
+        -webkit-animation: fadeIn 500ms ease-in-out;
         will-change: margin-left, opacity;
       }
 
@@ -46,12 +49,18 @@ const StyledHero = styled.section`
         margin: 14px 0px;
         font-size: 1.5rem;
         animation: fadeIn 600ms ease-in-out;
+        -o-animation: fadeIn 600ms ease-in-out;
+        -moz-animation: fadeIn 600ms ease-in-out;
+        -webkit-animation: fadeIn 600ms ease-in-out;
         will-change: margin-left, opacity;
       }
 
       p {
         font-size: 1rem;
         animation: fadeIn 1s ease-in-out;
+        -o-animation: fadeIn 1s ease-in-out;
+        -moz-animation: fadeIn 1s ease-in-out;
+        -webkit-animation: fadeIn 1s ease-in-out;
         will-change: margin-left, opacity;
       }
     }
@@ -67,8 +76,11 @@ const StyledHero = styled.section`
         width: 100% !important;
         height: auto !important;
         position: absolute;
-        image-rendering: optimizeQuality;
+        image-rendering: optimizeSpeed;
         animation: illustratorAnimation 8s infinite;
+        -o-animation: illustratorAnimation 8s infinite;
+        -moz-animation: illustratorAnimation 8s infinite;
+        -webkit-animation: illustratorAnimation 8s infinite;
         will-change: transform;
         z-index: 1;
       }
@@ -95,6 +107,9 @@ const StyledHero = styled.section`
 
         img {
           animation: illustratorAnimation 10s infinite;
+          -o-animation: illustratorAnimation 10s infinite;
+          -moz-animation: illustratorAnimation 10s infinite;
+          -webkit-animation: illustratorAnimation 10s infinite;
         }
       }
     }
