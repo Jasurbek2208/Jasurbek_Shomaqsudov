@@ -13,7 +13,7 @@ export default function Hero() {
             <p>Check out the site to learn more about me.</p>
           </div>
           <div className='image'>
-            <img src={heroImage} alt='frontend developer illustrator' decoding='async' loading='lazy' width='300' height='300' />
+            <img src={heroImage} alt='frontend developer illustrator' width='300' height='300' />
           </div>
         </main>
       </div>
