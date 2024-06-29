@@ -30,6 +30,41 @@ body > h2.hidden-title-forever {
   overflow: hidden !important;
   transform: scale(0) !important;
 }
+#google_translate_element > .skiptranslate.goog-te-gadget {
+  width: max-content !important;
+}
+#google_translate_element > .skiptranslate.goog-te-gadget .goog-te-gadget-simple,
+#google_translate_element > .skiptranslate.goog-te-gadget .goog-te-gadget-simple span,
+#google_translate_element > .skiptranslate.goog-te-gadget .goog-te-gadget-simple span a {
+  display: flex !important;
+}
+#google_translate_element > .skiptranslate.goog-te-gadget .goog-te-gadget-simple {
+  padding: 0px !important;
+  background: transparent !important;
+  border: none !important;
+  color: #f1f1f1 !important;
+  font-size: 15px !important;
+}
+#google_translate_element > .skiptranslate.goog-te-gadget .goog-te-gadget-simple img {
+  display: none !important;
+  overflow: hidden !important;
+  scale: 0 !important;
+}
+body > div.skiptranslate:not(.goog-te-gadget) {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+  overflow: hidden !important;
+  transform: none !important;
+  transition: none !important;
+  scale: 0 !important;
+}
+body {
+  position: static !important;
+  top: 0 !important;
+}
 ::-webkit-scrollbar {
   width: 3px;
   height: 3px;

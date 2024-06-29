@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 // Components
-import { Button } from 'components'
+import { Button, OrderModal } from 'components'
 
 export default function Navbar(): JSX.Element {
-  const [menuOpen, setMenuOpen] = useState<boolean>(false)
   const [navItems, setNavItems] = useState<boolean>(false)
+  const [menuOpen, setMenuOpen] = useState<boolean>(false)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  
   const [renderCount, setRenderCount] = useState<number>(0)
 
-  const scrollToAnchor = (id: string) => {
+  const scrollToAnchor: (id: string) => void = (id: string) => {
     const element: HTMLElement | null = document?.getElementById(id)
 
     if (element) element?.scrollIntoView({ behavior: 'smooth' })
@@ -23,6 +25,22 @@ export default function Navbar(): JSX.Element {
   useEffect(() => {
     if (renderCount > 2) menuOpen ? setNavItems(false) : setNavItems(true)
   }, [renderCount])
+
+  useEffect(() => {
+    const addScript: HTMLScriptElement = document?.createElement('script')
+    addScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+    document?.body?.appendChild(addScript)
+    ;(window as any).googleTranslateElementInit = () => {
+      new (window as any).google.translate.TranslateElement(
+        {
+          pageLanguage: 'en',
+          includedLanguages: 'en,ru,uz,ar,kk,tr,uk,de,ky,ps',
+          layout: (window as any)?.google?.translate?.TranslateElement?.InlineLayout?.SIMPLE,
+        },
+        'google_translate_element',
+      )
+    }
+  }, [])
 
   return (
     <StyledNavbar>
@@ -38,7 +56,7 @@ export default function Navbar(): JSX.Element {
             </li>
             <li>
               <a href='#about' onClick={() => scrollToAnchor('about')}>
-                About
+                About Me
               </a>
             </li>
             <li>
@@ -51,6 +69,11 @@ export default function Navbar(): JSX.Element {
                 Contact
               </a>
             </li>
+            <li>
+              <p>
+                <div id='google_translate_element'></div>
+              </p>
+            </li>
           </ul>
         </div>
         <div className={'mobile-menu' + (menuOpen ? ' On' : '')} onClick={() => setMenuOpen((p) => !p)}>
@@ -60,9 +83,12 @@ export default function Navbar(): JSX.Element {
           <span></span>
         </div>
         <div className='action'>
-          <Button content='Send Order' animatedBtn={true} />
+          <Button content='Send Order' animatedBtn={true} onClick={() => setIsModalOpen(true)} />
         </div>
       </div>
+
+      {/* Order Modal */}
+      <OrderModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </StyledNavbar>
   )
 }
@@ -132,7 +158,7 @@ const StyledNavbar = styled.nav`
     }
   }
 
-  @media (max-width: 560px) {
+  @media (max-width: 695px) {
     padding: 10px 0px;
 
     position: fixed;

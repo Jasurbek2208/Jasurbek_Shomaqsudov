@@ -1,24 +1,29 @@
+import { Suspense } from 'react'
+import styled from 'styled-components'
 import { block } from 'million/react'
 import { Toaster } from 'react-hot-toast'
 import { BrowserRouter } from 'react-router-dom'
-import styled from 'styled-components'
-import { Contact, Hero, Navbar, About, Works, MatrixLoader, Footer } from 'components'
+
+// Components
+import { Contact, Hero, Navbar, Works, MatrixLoader, Footer, About } from 'components'
 
 const AppBlock = block(
   function App(): JSX.Element {
     return (
-      <BrowserRouter>
-        <StyledApp>
-          <Navbar />
-          <Hero />
-          <About />
-          <Works />
-          <Contact />
-          <Footer />
-          <Toaster />
-          <MatrixLoader />
-        </StyledApp>
-      </BrowserRouter>
+      <Suspense>
+        <BrowserRouter>
+          <StyledApp>
+            <Navbar />
+            <Hero />
+            <About />
+            <Works />
+            <Contact />
+            <Footer />
+            <Toaster />
+            <MatrixLoader />
+          </StyledApp>
+        </BrowserRouter>
+      </Suspense>
     )
   },
   { as: 'div' },
