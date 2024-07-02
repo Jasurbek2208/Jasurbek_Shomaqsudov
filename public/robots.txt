@@ -1,6 +1,9 @@
 User-agent: *
+Crawl-delay: 2
+
 Allow: /
 
+Disallow: /private/
 Disallow: /assets/
 
 Sitemap: https://shomaqsudov.uz/sitemap.xml
