@@ -7,10 +7,7 @@ import viteImagemin from 'vite-plugin-imagemin'
 import viteCompression from 'vite-plugin-compression'
 
 export default defineConfig({
-  server: {
-    port: 5173,
-    host: true,
-  },
+  server: { port: 5173, host: true },
   build: {
     rollupOptions: { input: { main: './index.html' } },
     outDir: 'dist',
@@ -24,7 +21,7 @@ export default defineConfig({
   },
   publicDir: 'public',
   plugins: [
-    million?.vite({ auto: true }),
+    million?.vite({ auto: true, telemetry: false }),
     react(),
     tsconfigPaths(),
     viteCompression(),

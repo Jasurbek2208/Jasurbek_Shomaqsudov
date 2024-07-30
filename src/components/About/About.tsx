@@ -150,13 +150,15 @@ export default function About() {
 
             {clients && clients?.length > 0 && (
               <Slider ref={sliderClientsRef} {...sliderSettings} className='clients_slider'>
-                {clients?.map((client: IClient) => (
-                  <div className='client-slider' tabIndex={-1} key={client?.id}>
-                    <a href={client?.link} target='_blank' rel='noopener noreferrer'>
-                      <img src={client?.image} alt={client?.title} decoding='async' loading='lazy' />
-                    </a>
-                  </div>
-                ))}
+                {clients
+                  ?.sort((a: IClient, b: IClient) => a?.sortId - b?.sortId)
+                  ?.map((client: IClient) => (
+                    <div className='client-slider' tabIndex={-1} key={client?.id}>
+                      <a href={client?.link} target='_blank' rel='noopener noreferrer'>
+                        <img src={client?.image} alt={client?.title} decoding='async' loading='lazy' />
+                      </a>
+                    </div>
+                  ))}
               </Slider>
             )}
           </div>
@@ -228,9 +230,22 @@ const StyledAbout = styled.section`
           width: 100% !important;
           height: max-content !important;
 
-          img {
-            width: 100% !important;
-            height: 100% !important;
+          a {
+            outline: none;
+
+            img {
+              padding-bottom: 20px;
+              width: 100% !important;
+              height: 100% !important;
+              max-height: 100% !important;
+              border-bottom: 2px solid transparent;
+              transition: 300ms ease-in-out border;
+            }
+
+            &:hover img,
+            &:focus img {
+              border-color: #fff;
+            }
           }
         }
       }

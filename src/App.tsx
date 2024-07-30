@@ -1,14 +1,28 @@
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import styled from 'styled-components'
 import { block } from 'million/react'
 import { Toaster } from 'react-hot-toast'
 import { BrowserRouter } from 'react-router-dom'
+
+// Helpers
+import handleKeyDown from 'helpers/handleKeyDown'
 
 // Components
 import { Contact, Hero, Navbar, Works, MatrixLoader, Footer, About } from 'components'
 
 const AppBlock = block(
   function App(): JSX.Element {
+    // Disabling dev elements
+    useEffect(() => {
+      window?.addEventListener('keydown', handleKeyDown)
+      window?.addEventListener('contextmenu', (e) => e?.preventDefault())
+
+      return () => {
+        window?.removeEventListener('keydown', handleKeyDown)
+        window?.removeEventListener('contextmenu', (e) => e?.preventDefault())
+      }
+    }, [])
+
     return (
       <Suspense>
         <BrowserRouter>

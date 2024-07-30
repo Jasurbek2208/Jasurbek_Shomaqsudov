@@ -14,11 +14,13 @@ const ModalBackdrop = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  max-height: 100dvh;
+  overflow-y: auto;
 `
 
 const ModalContent = styled.div`
   background: white;
-  padding: 20px;
+  padding: 22px 15px;
   border-radius: 8px;
   max-width: 500px;
   width: 100%;
@@ -31,15 +33,23 @@ const H2 = styled.h2`
 `
 
 const Form = styled.form`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  column-gap: 10px;
+  row-gap: 0px;
+  grid-template-columns: 1fr 1fr;
 `
 
 const Input = styled.input`
   margin-bottom: 10px;
   padding: 8px;
+  width: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
+  grid-column: span 1 / span 1;
+
+  &:last-of-type {
+    grid-column: span 2 / span 2;
+  }
 `
 
 const Select = styled.select`
@@ -47,6 +57,7 @@ const Select = styled.select`
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  grid-column: span 2 / span 2;
 `
 
 const Textarea = styled.textarea`
@@ -55,10 +66,11 @@ const Textarea = styled.textarea`
   width: 100% !important;
   max-width: 100% !important;
   min-width: 100% !important;
-  min-height: 85px;
-  max-height: 145px;
+  min-height: 65px;
+  max-height: 65px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  grid-column: span 2 / span 2;
 `
 
 const Button = styled.button`
@@ -68,6 +80,7 @@ const Button = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  grid-column: span 2 / span 2;
 
   &:hover {
     background: #0056b3;
@@ -104,36 +117,24 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e?.preventDefault()
 
-    const API_URL: string = `https://api.telegram.org/bot${import.meta.env.VITE_TELEGRAM_BOT_TOKEN}/sendMessage`
+    const API_URL: string = `https://api.telegram.org/bot${import.meta?.env?.VITE_TELEGRAM_BOT_TOKEN || ''}/sendMessage`
 
-    let name: string = (e.currentTarget[0] as HTMLInputElement).value
-    let surname: string = (e.currentTarget[1] as HTMLInputElement).value
-    let phone: string = (e.currentTarget[2] as HTMLInputElement).value
-    let country: string = (e.currentTarget[3] as HTMLInputElement).value
-    let email: string = (e.currentTarget[4] as HTMLInputElement).value
-    let telegramUsername: string = (e.currentTarget[5] as HTMLInputElement).value
-    let companyName: string = (e.currentTarget[6] as HTMLInputElement).value
-    let oldSiteLink: string = (e.currentTarget[7] as HTMLInputElement).value
-    let siteType: string = (e.currentTarget[8] as HTMLInputElement).value
-    let estimatedBudget: string = (e.currentTarget[0] as HTMLInputElement).value
-    let description: string = (e.currentTarget[10] as HTMLInputElement).value
+    let name: string = (e?.currentTarget[0] as HTMLInputElement)?.value || ''
+    let surname: string = (e?.currentTarget[1] as HTMLInputElement)?.value || ''
+    let phone: string = (e?.currentTarget[2] as HTMLInputElement)?.value || ''
+    let country: string = (e?.currentTarget[3] as HTMLInputElement)?.value || ''
+    let email: string = (e?.currentTarget[4] as HTMLInputElement)?.value || ''
+    let telegramUsername: string = (e?.currentTarget[5] as HTMLInputElement)?.value || ''
+    let companyName: string = (e?.currentTarget[6] as HTMLInputElement)?.value || ''
+    let oldSiteLink: string = (e?.currentTarget[7] as HTMLInputElement)?.value || ''
+    let siteType: string = (e?.currentTarget[8] as HTMLInputElement)?.value || ''
+    let estimatedBudget: string = (e?.currentTarget[0] as HTMLInputElement)?.value || ''
+    let description: string = (e?.currentTarget[10] as HTMLInputElement)?.value || ''
 
     let text: string = `<b>Ismi:</b> ${name} \n\n<b>Familiyasi:</b> ${surname} \n\n<b>Telefon raqami:</b> ${phone} \n\n<b>Manzil:</b> ${country} \n\n<b>E-pochta:</b> ${email} \n\n<b>Telegram:</b> ${telegramUsername} \n\n<b>Kompanniya Nomi:</b> ${companyName} \n\n<b>Mavjud sayt linki:</b> ${oldSiteLink} \n\n<b>Sayt turi:</b> ${siteType} \n\n<b>Ko'zlanayotgan budjet:</b> ${estimatedBudget} \n\n<b>Qo'shimcha Xabar:</b> ${description}`
 
     try {
-      await axios.post(
-        API_URL,
-        {
-          chat_id: import.meta.env.VITE_TELEGRAM_CHAT_ID,
-          parse_mode: 'html',
-          text,
-        },
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        },
-      )
+      await axios.post(API_URL, { chat_id: import.meta?.env?.VITE_TELEGRAM_CHAT_ID || '', parse_mode: 'html', text }, { headers: { 'Content-Type': 'multipart/form-data' } })
       ;(e.target as HTMLFormElement)?.reset()
       toast.success('Message sent successfully!')
       onClose()
@@ -146,7 +147,7 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <ModalBackdrop onClick={onClose}>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
+      <ModalContent onClick={(e) => e?.stopPropagation()}>
         <H2>Send Order</H2>
         <Form onSubmit={handleSubmit}>
           <Input type='text' name='name' placeholder='Name' value={formData.name} onChange={handleChange} required />

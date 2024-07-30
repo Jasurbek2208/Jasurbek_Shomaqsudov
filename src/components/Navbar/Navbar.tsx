@@ -5,10 +5,12 @@ import styled from 'styled-components'
 import { Button, OrderModal } from 'components'
 
 export default function Navbar(): JSX.Element {
+  const params: URLSearchParams = new URLSearchParams(window?.location?.search)
+
   const [navItems, setNavItems] = useState<boolean>(false)
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
-  
+
   const [renderCount, setRenderCount] = useState<number>(0)
 
   const scrollToAnchor: (id: string) => void = (id: string) => {
@@ -27,20 +29,28 @@ export default function Navbar(): JSX.Element {
   }, [renderCount])
 
   useEffect(() => {
-    const addScript: HTMLScriptElement = document?.createElement('script')
-    addScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
-    document?.body?.appendChild(addScript)
-    ;(window as any).googleTranslateElementInit = () => {
-      new (window as any).google.translate.TranslateElement(
-        {
-          pageLanguage: 'en',
-          includedLanguages: 'en,ru,uz,ar,kk,tr,uk,de,ky,ps',
-          layout: (window as any)?.google?.translate?.TranslateElement?.InlineLayout?.SIMPLE,
-        },
-        'google_translate_element',
-      )
-    }
+    setTimeout(() => {
+      const addScript: HTMLScriptElement = document?.createElement('script')
+      addScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+      document?.body?.appendChild(addScript)
+      ;(window as any).googleTranslateElementInit = () => {
+        new (window as any).google.translate.TranslateElement(
+          {
+            pageLanguage: 'en',
+            includedLanguages: 'en,ru,uz,ar,kk,tr,uk,de,ky,ps',
+            layout: (window as any)?.google?.translate?.TranslateElement?.InlineLayout?.SIMPLE,
+          },
+          'google_translate_element',
+        )
+      }
+    }, 600)
   }, [])
+
+  useEffect(() => {
+    if (JSON?.parse(params?.get('sendOrder') || 'false')) {
+      setIsModalOpen(true)
+    }
+  }, [params?.get('sendOrder')])
 
   return (
     <StyledNavbar>
@@ -88,7 +98,7 @@ export default function Navbar(): JSX.Element {
       </div>
 
       {/* Order Modal */}
-      <OrderModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <OrderModal isOpen={isModalOpen} onClose={() => { setIsModalOpen(false); window?.history?.replaceState({}, '', '/') }} />
     </StyledNavbar>
   )
 }

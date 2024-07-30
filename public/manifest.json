@@ -1,6 +1,6 @@
 {
-  "name": "Jasurbek Shomaqsudov - Software Engineer",
   "short_name": "JS Portfolio",
+  "name": "Jasurbek Shomaqsudov - Software Engineer",
   "description": "Jasurbek Shomaqsudov is a front-end developer who creates responsive and user-friendly websites. See my portfolio and learn more about my skills, experience.",
   "id": "js-portfolio",
   "start_url": ".",
@@ -82,6 +82,50 @@
       "short_name": "Home",
       "description": "Go to Home",
       "url": "/",
+      "icons": [
+        {
+          "src": "https://shomaqsudov.uz/logo.webp",
+          "sizes": "64x64 32x32 24x24 16x16"
+        },
+        {
+          "src": "https://shomaqsudov.uz/logo.webp",
+          "sizes": "72x72"
+        },
+        {
+          "src": "https://shomaqsudov.uz/logo.webp",
+          "sizes": "96x96"
+        },
+        {
+          "src": "https://shomaqsudov.uz/logo.webp",
+          "sizes": "128x128"
+        },
+        {
+          "src": "https://shomaqsudov.uz/logo.webp",
+          "sizes": "144x144"
+        },
+        {
+          "src": "https://shomaqsudov.uz/logo.webp",
+          "sizes": "152x152"
+        },
+        {
+          "src": "https://shomaqsudov.uz/logo.webp",
+          "sizes": "192x192"
+        },
+        {
+          "src": "https://shomaqsudov.uz/logo.webp",
+          "sizes": "384x384"
+        },
+        {
+          "src": "https://shomaqsudov.uz/logo.webp",
+          "sizes": "512x512"
+        }
+      ]
+    },
+    {
+      "name": "Send Order",
+      "short_name": "Send Order",
+      "description": "Go to Send Order",
+      "url": "/?sendOrder=true",
       "icons": [
         {
           "src": "https://shomaqsudov.uz/logo.webp",

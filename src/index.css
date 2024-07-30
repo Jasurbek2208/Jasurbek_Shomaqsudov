@@ -4,6 +4,14 @@
   box-sizing: border-box;
   font-family: 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+/* Disable the blue clicking effect */
+button:focus,
+button:active,
+a:focus,
+a:active,
+div {
+  -webkit-tap-highlight-color: transparent !important;
+}
 .container {
   margin: 0 auto;
   padding: 0px 16px;

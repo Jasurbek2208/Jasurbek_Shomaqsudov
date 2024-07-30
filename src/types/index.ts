@@ -8,6 +8,7 @@ export interface IClient {
   title: string
   image: string
   link: string
+  sortId: number
 }
 export interface IWorks {
   id: string
